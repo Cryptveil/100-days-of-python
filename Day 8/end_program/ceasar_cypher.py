@@ -5,7 +5,7 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-continue_playing = "yes"
+continue_playing = True
 
 print(logo)
 
@@ -29,7 +29,7 @@ def caesar(start_text, shift_amount, cipher_direction):
 #If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
 #Hint: Try creating a while loop that continues to execute the program if the user types 'yes'. 
 
-while continue_playing == "yes":
+while continue_playing:
 
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
     text = input("Type your message:\n").lower()
@@ -45,7 +45,7 @@ while continue_playing == "yes":
     choice = input("\nDo you wish to play again?\n").lower()
     
     if choice == "yes":
-        continue_playing = "yes"
+        continue_playing = True
     elif choice == "no":
-        continue_playing = "no"
+        continue_playing = False
         print("Thank you for playing!")
