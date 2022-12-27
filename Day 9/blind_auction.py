@@ -6,8 +6,6 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 bidder_dictionary = {}
 keep_running = True
-winner_name = max(bidder_dictionary, key=bidder_dictionary.get)
-winning_bid = max(bidder_dictionary.values())
 
 print(logo)
 print("Welcome to the secret auction program.")
@@ -23,6 +21,8 @@ while keep_running:
         os.system('cls' if os.name == 'nt' else 'clear')
         
     elif answer == 'no':
+        winner_name = max(bidder_dictionary, key=bidder_dictionary.get)
+        winning_bid = max(bidder_dictionary.values())
         keep_running = False
         print(f"The winner is {winner_name} with a bid of ${winning_bid}")
 
