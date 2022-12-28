@@ -15,9 +15,10 @@ Here are some of the most interesting projects I've built during these 10 days:
 
 | ![Image Alt Text](https://i.imgur.com/R2MetvG.png) |
 |:--:|
-| *Image Caption* |
-<p align="center">
-    <img src="https://i.imgur.com/R2MetvG.png" width="500" />
-    <img src="https://i.imgur.com/AkDhSiz.png" width="500" />
-    <img src="https://i.imgur.com/SVcPI97.png" width="500" />
-</p>
+| *Treasure Island game (too short but had potential to be good)* |
+| ![Image Alt Text](https://i.imgur.com/AkDhSiz.png) |
+|:--:|
+| *Hangman Game* |
+| ![Image Alt Text](https://i.imgur.com/SVcPI97.png) |
+|:--:|
+| *Caesar Cipher program* |
