@@ -1,8 +1,9 @@
 # 100-days-of-python
 
-This repository will contain 100 Python projects, developed during the 100 Days of Code: The Complete Python Pro Bootcamp for 2023 course on Udemy.
+This repository will contain 100 Python projects, developed during the 100 Days
+of Code: The Complete Python Pro Bootcamp for 2023 course on Udemy.
 
-The projects will be in clusters of 10 days each for better visibility.
+I'm separating all the projects in clusters of 10 days each for better visibility.
 
 **Milestones:**
 
