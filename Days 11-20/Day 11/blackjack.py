@@ -35,17 +35,19 @@ state = ["You win 😃", "You lose 😤"]
 player_score = 0
 computer_score = 0
 game_is_running = True
-more_cards = True
 
 while game_is_running:
+    more_cards = True
     play_game = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
     if play_game == "y":
-        players_hand.append(random.choice(deck))
-        players_hand.append(random.choice(deck))
+        computer_hand.append(random.choice(deck))
+        for i in range(2):
+            player_hand.append(random.choice(deck))
+        player_score = sum(player_hand)
         os.system("cls" if os.name == "nt" else "clear")
         print(logo)
-        print(f"Your cards: {players_hand}, current score: ")
-        print(f"Computer's first card: ")
+        print(f"Your cards: {player_hand}, current score: {player_score}")
+        print(f"Computer's first card: {computer_hand[0]}")
         while more_cards:
             another_card = input("Type 'y' to get another card, type 'n' to pass: ")
             if another_card == "y":
@@ -55,6 +57,8 @@ while game_is_running:
                 print(f"Your final hand: , final score: ")
                 print(f"Computer's final hand: , final score: ")
                 more_cards = False
+                player_hand = []
+                computer_hand = []
 
     else:
         game_is_running = False
