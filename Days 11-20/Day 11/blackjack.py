@@ -29,17 +29,22 @@ from art import logo
 import os
 
 deck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] 
-card_list = 
+player_hand = []
+computer_hand = []
 state = ["You win 😃", "You lose 😤"]
+player_score = 0
+computer_score = 0
 game_is_running = True
 more_cards = True
 
 while game_is_running:
     play_game = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
     if play_game == "y":
+        players_hand.append(random.choice(deck))
+        players_hand.append(random.choice(deck))
         os.system("cls" if os.name == "nt" else "clear")
         print(logo)
-        print(f"Your cards: , current score: ")
+        print(f"Your cards: {players_hand}, current score: ")
         print(f"Computer's first card: ")
         while more_cards:
             another_card = input("Type 'y' to get another card, type 'n' to pass: ")
