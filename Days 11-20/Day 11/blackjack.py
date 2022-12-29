@@ -30,17 +30,17 @@ import os
 
 
 def deal_card():
-    # Returns a random card when called
+    """ Returns a random card when called """
     deck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] 
     card = random.choice(deck)
     return card
 
 
 def calculate_score(hand):
-    # Calculates the score and returns it
+    """ Calculates the score and returns it """
     if sum(hand) == 21 and len(hand) == 2:
         return 0
-    if 11 in hand and sum(cards) > 21:
+    if 11 in hand and sum(hand) > 21:
         hand.remove(11)
         cards.append(1)
     return sum(hand)
@@ -62,6 +62,11 @@ while game_is_running:
             computer_hand.append(deal_card())
         # Gets the player score (sum of all the cards on hand)
         player_score = calculate_score(player_hand)
+        computer_score = calculate_score(player_hand)
+        if player_score == 0:
+            print(state[[0]])
+
+
         # Clears the terminal for better user experience
         os.system("cls" if os.name == "nt" else "clear")
         print(logo)
