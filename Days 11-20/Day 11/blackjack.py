@@ -28,8 +28,8 @@ import random
 from art import logo
 import os
 
-deck = {}
-card_list = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+deck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] 
+card_list = 
 game_is_running = True
 more_cards = True
 
