@@ -51,8 +51,10 @@ while game_is_running:
         while more_cards:
             another_card = input("Type 'y' to get another card, type 'n' to pass: ")
             if another_card == "y":
-                print(f"Your cards: , current score: ")
-                print(f"Computer's first card: ")
+                player_hand.append(random.choice(deck))
+                player_score = sum(player_hand)
+                print(f"Your cards: {player_hand}, current score: {player_score}")
+                print(f"Computer's first card: {computer_hand[0]}")
             else:
                 print(f"Your final hand: , final score: ")
                 print(f"Computer's final hand: , final score: ")
