@@ -30,13 +30,13 @@ import os
 
 deck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] 
 card_list = 
+state = ["You win 😃", "You lose 😤"]
 game_is_running = True
 more_cards = True
 
 while game_is_running:
     play_game = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
     if play_game == "y":
-
         os.system("cls" if os.name == "nt" else "clear")
         print(logo)
         print(f"Your cards: , current score: ")
