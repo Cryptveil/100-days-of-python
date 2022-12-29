@@ -24,7 +24,7 @@ def compare (player_score, computer_score):
     if player_score > 21 and computer_score > 21:
         return "You lose 😤"
     if player_score == computer_score:
-        return "Draw!"
+        return "Draw 🙃"
     elif computer_score == 0:
         return "You lose 😤"
     elif player_score == 0:
@@ -53,7 +53,7 @@ def play_game():
     while game_is_running:
             # Gets the player score (sum of all the cards on hand)
             player_score = calculate_score(player_hand)
-            computer_score = calculate_score(player_hand)
+            computer_score = calculate_score(computer_hand)
             print(f"Your cards: {player_hand}, current score: {player_score}")
             print(f"Computer's first card: {computer_hand[0]}")
             # Checks if the game should be over
@@ -72,9 +72,10 @@ def play_game():
     while computer_score != 0 and computer_score < 17:
         computer_hand.append(deal_card())
         computer_score = calculate_score(computer_hand)
-        print(f"Your final hand: {player_hand}, final score: {player_score}")
-        print(f"Computer's final hand: {computer_hand}, final score: {computer_score}")
-        print(compare(player_score, computer_score))
+
+    print(f"Your final hand: {player_hand}, final score: {player_score}")
+    print(f"Computer's final hand: {computer_hand}, final score: {computer_score}")
+    print(compare(player_score, computer_score))
 
 while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
     os.system("cls" if os.name == "nt" else "clear")
