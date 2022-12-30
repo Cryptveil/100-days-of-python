@@ -25,6 +25,7 @@ def is_game_over(health):
 
 
 def decrease_health():
+    global health
     return health - 1
 
 
