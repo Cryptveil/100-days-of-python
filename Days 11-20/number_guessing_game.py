@@ -41,10 +41,11 @@ def check_guess(guess, answer):
 
 def play_game():
     """Starts the game!"""
-
+    os.system("cls" if os.name == "nt" else "clear")
     print(logo)
     print("Welcome to the Number Guessing Game!")
     print("Try to guess a number between 1 and 100.")
+    global health
     health = chosen_difficulty()  # Will start the health variable based on the chosen difficulty 
     answer = chosen_number()  # Initializes the chosen number
     print(f"The answer is: {answer}")  # Debugging tool
@@ -64,5 +65,6 @@ def play_game():
 
 
 play_game()
+
 while input("Do you wanna play again? Type 'y' or 'n': ") == "y":
     play_game()
