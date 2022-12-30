@@ -45,10 +45,12 @@ def play_game():
     print(logo)
     print("Welcome to the Number Guessing Game!")
     print("Try to guess a number between 1 and 100.")
-    global health
-    health = chosen_difficulty()  # Will start the health variable based on the chosen difficulty 
+    global health  # Could also declare a few global variables for the health
+                   # and use them outside here
+    health = chosen_difficulty()  # Will start the health variable based on the
+                                  # chosen difficulty 
     answer = chosen_number()  # Initializes the chosen number
-    print(f"The answer is: {answer}")  # Debugging tool
+    #print(f"The answer is: {answer}")  # Debugging tool
 
     while health > 0:
         print(f"You have {health} attempts remaining to guess the number.")
