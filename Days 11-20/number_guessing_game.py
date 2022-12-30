@@ -1,12 +1,15 @@
 from art import logo
 import random
+import os
 
 
 def chosen_number():
+    """This function just chooses a random number between 1 and 100"""
     return random.choice(range(1,101))
 
 
 def chosen_difficulty():
+    """This function chooses the difficulty, easy gets 10 tries and hard gets 5"""
     difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
     if difficulty == "easy":
         health = 10
@@ -18,25 +21,48 @@ def chosen_difficulty():
     return health
 
 
-def is_game_over(health):
-    if health == 0:
-        return True
-    return False
-
-
 def decrease_health():
+    """Decreases health by one point"""
     return health - 1
 
 
-print(logo)
-print("Welcome to the Number Guessing Game!")
-print("Try to guess a number between 1 and 100.")
+def check_guess(guess, answer):
+    """Checks the guess"""
+    if guess == answer:
+        print(f"Hey you got it, the answer was {answer}. Are you cheating?")
+        return True
+    elif guess > answer:
+        print("Too high!")
+        return False
+    elif guess < answer:
+        print("Too low!")
+        return False
 
-health = chosen_difficulty()
-print(health)
-decrease_health()
-print(health)
+
+def play_game():
+    """Starts the game!"""
+
+    print(logo)
+    print("Welcome to the Number Guessing Game!")
+    print("Try to guess a number between 1 and 100.")
+    health = chosen_difficulty()  # Will start the health variable based on the chosen difficulty 
+    answer = chosen_number()  # Initializes the chosen number
+    print(f"The answer is: {answer}")  # Debugging tool
+
+    while health > 0:
+        print(f"You have {health} attempts remaining to guess the number.")
+        guess = int(input("Make a guess: "))
+        check = check_guess(guess, answer)
+        if check:
+            health = 0
+        else:
+            health = decrease_health()
+            if health > 0:
+                print("Guess again.")
+            else: 
+                print("You lose loooooool")
 
 
-
-
+play_game()
+while input("Do you wanna play again? Type 'y' or 'n': ") == "y":
+    play_game()
