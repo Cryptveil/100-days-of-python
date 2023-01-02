@@ -52,12 +52,14 @@ def play_game():
     print(logo)
     option_a = get_options()
     print(f"Compare A: {name(option_a)}, a {description(option_a)}, from {country(option_a)}.")
-    print(option_a["follower_count"])
+    # Debugging print:
+    # print(option_a["follower_count"])
     print(vs)
     option_b = get_options()
     option_b = compare_pick(option_a, option_b)
     print(f"Against B: {name(option_b)}, a {description(option_b)}, from {country(option_b)}.")
-    print(option_b["follower_count"])
+    # Debugging print:
+    # print(option_b["follower_count"])
     more_followers = compare_followers(option_a, option_b)
     guess = input("Who has more followers? Type 'A' or 'B': ").lower()
     if guess == "a":
