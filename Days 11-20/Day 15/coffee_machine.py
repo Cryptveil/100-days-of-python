@@ -22,7 +22,7 @@ def calculate_money():
 
 
 def check_resources():
-
+    if resources["water"] = 
 
 
 machine_is_off = False
@@ -32,9 +32,8 @@ while not machine_is_off:
         machine_is_off = True
     elif choice == "report": 
         print (format_report())
-    elif choice == "latte":
-        money = calculate_money()
-        print(money)
+    else:
+        drink = MENU[choice]
 
 
  
