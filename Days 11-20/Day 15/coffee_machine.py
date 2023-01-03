@@ -39,7 +39,7 @@ while not machine_is_off:
     else:
         drink = MENU[choice]
         if check_resources(drink["ingredients"]):
-
+            money = calculate_money()
 
 
  
