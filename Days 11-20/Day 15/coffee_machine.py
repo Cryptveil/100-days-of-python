@@ -61,4 +61,4 @@ while not machine_is_off:
             if is_transaction_successful(money, drink):
                 machine_money += drink["cost"]
                 deduct_ingredients(drink["ingredients"])
-                print(f"Here is your {choice}, enjoy!")
+                print(f"Here is your {choice} ☕️. Enjoy!")
