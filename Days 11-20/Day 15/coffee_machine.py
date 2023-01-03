@@ -21,8 +21,12 @@ def calculate_money():
     return money
 
 
-def check_resources():
-    if resources["water"] = 
+def check_resources(order_ingredients):
+    for item in order_ingredients:
+        if order_ingredients[item] >= resources[item]:
+            print(f"Sorry, there is not enough {item}")
+            return False
+    return True
 
 
 machine_is_off = False
@@ -34,6 +38,8 @@ while not machine_is_off:
         print (format_report())
     else:
         drink = MENU[choice]
+        if check_resources(drink["ingredients"]):
+
 
 
  
