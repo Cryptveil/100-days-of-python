@@ -29,6 +29,11 @@ def check_resources(order_ingredients):
     return True
 
 
+def is_transaction_successful(money, drink):
+    if drink["cost"] > money:
+        print("Sorry, that's not enough money. Money refunded.")
+
+
 machine_is_off = False
 while not machine_is_off:
     choice = input("What would you like? (espresso/latte/cappuccino): ")
@@ -40,7 +45,8 @@ while not machine_is_off:
         drink = MENU[choice]
         if check_resources(drink["ingredients"]):
             money = calculate_money()
-
+            is_transaction_successful(money, drink)
+            
 
  
 
