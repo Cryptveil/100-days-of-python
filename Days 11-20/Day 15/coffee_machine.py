@@ -1,7 +1,7 @@
 from data import MENU, resources
 import os
 
-money = 0.0
+machine_money = 0.0
 
 
 def format_report():
@@ -17,8 +17,8 @@ def calculate_money():
     dimes = int(input("How many dimes?: "))
     nickles = int(input("How many nickles?: "))
     pennies = int(input("How many pennies?: "))
-    money = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
-    return money
+    machine_money = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
+    return machine_money
 
 
 def check_resources(order_ingredients):
@@ -32,6 +32,11 @@ def check_resources(order_ingredients):
 def is_transaction_successful(money, drink):
     if drink["cost"] > money:
         print("Sorry, that's not enough money. Money refunded.")
+    else:
+        global machine_money
+        machine_money += drink["cost"]
+        change = money - drink["cost"]
+        print(f"Here is your change: ${change}")
 
 
 machine_is_off = False
