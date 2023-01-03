@@ -21,7 +21,7 @@ def calculate_money():
 
 def check_resources(drink_ingredients):
     for item in drink_ingredients:
-        if drink_ingredients[item] >= resources[item]:
+        if drink_ingredients[item] > resources[item]:
             print(f"Sorry, there is not enough {item}")
             return False
     return True
@@ -38,9 +38,13 @@ def is_transaction_successful(money, drink):
 
 
 def deduct_ingredients(drink_ingredients):
-    resources["water"] -= drink_ingredients["water"]
-    resources["milk"] -= drink_ingredients["milk"]
-    resources["coffee"] -= drink_ingredients["coffee"]
+    if drink_ingredients["water"] == 50: 
+        resources["water"] -= drink_ingredients["water"]
+        resources["coffee"] -= drink_ingredients["coffee"]
+    else:
+        resources["water"] -= drink_ingredients["water"]
+        resources["coffee"] -= drink_ingredients["coffee"]
+        resources["milk"] -= drink_ingredients["milk"]
     
 
 machine_is_off = False
