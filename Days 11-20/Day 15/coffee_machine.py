@@ -46,7 +46,3 @@ while not machine_is_off:
         if check_resources(drink["ingredients"]):
             money = calculate_money()
             is_transaction_successful(money, drink)
-            
-
- 
-
