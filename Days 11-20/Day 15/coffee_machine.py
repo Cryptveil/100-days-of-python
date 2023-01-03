@@ -43,13 +43,8 @@ def is_transaction_successful(money, drink):
 
 def deduct_ingredients(drink_ingredients):
     """Deducts ingredients from the machine"""
-    if drink_ingredients["water"] == 50: 
-        resources["water"] -= drink_ingredients["water"]
-        resources["coffee"] -= drink_ingredients["coffee"]
-    else:
-        resources["water"] -= drink_ingredients["water"]
-        resources["coffee"] -= drink_ingredients["coffee"]
-        resources["milk"] -= drink_ingredients["milk"]
+    for item in drink_ingredients:
+        resources[item] -= drink_ingredients[item]
     
 
 machine_is_off = False
