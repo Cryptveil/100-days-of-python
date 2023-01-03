@@ -5,8 +5,17 @@ from money_machine import MoneyMachine
 menu = Menu()
 coffee_maker = CoffeeMaker()
 money_machine = MoneyMachine()
-
 machine_is_running = True
+
+
+def enough_resources(drink):
+    """Created these functions to keep the code cleaner"""
+    return coffee_maker.is_resource_sufficient(drink)
+
+
+def payment_made(cost):
+    return money_machine.make_payment(drink.cost)
+
 
 while machine_is_running:
     choice = input(f"What would you like? ({menu.get_items()}): ").lower()
@@ -17,8 +26,5 @@ while machine_is_running:
         money_machine.report()
     else:
         drink = menu.find_drink(choice)
-        if coffee_maker.is_resource_sufficient(drink):
-            money_machine.make_payment(drink.cost)
+        if enough_resources(drink) and payment_made(drink.cost):
             coffee_maker.make_coffee(drink)
-        else:
-            pass
