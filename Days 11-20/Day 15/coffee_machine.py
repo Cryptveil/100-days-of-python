@@ -56,6 +56,7 @@ machine_is_off = False
 while not machine_is_off:
     choice = input("What would you like? (espresso/latte/cappuccino): ")
     if choice == "off":
+        print("Machine turning off.")
         machine_is_off = True
     elif choice == "report": 
         format_report()
