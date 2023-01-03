@@ -1,5 +1,4 @@
 from data import MENU, resources
-import os
 
 machine_money = 0.0
 
@@ -34,7 +33,9 @@ def is_transaction_successful(money, drink):
         return False
     else:
         change = money - drink["cost"]
-        print(f"Here is your change: ${change}")
+        print(f"Here is your change: ${change:.2f}")
+        global machine_money
+        machine_money += drink["cost"]
         return True
 
 
@@ -49,5 +50,4 @@ while not machine_is_off:
         drink = MENU[choice]
         if check_resources(drink["ingredients"]):
             money = calculate_money()
-            if is_transaction_successful(money, drink):
-                machine_money += drink["cost"]
+            is_transaction_successful(money, drink)
