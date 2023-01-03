@@ -4,6 +4,7 @@ machine_money = 0.0
 
 
 def format_report():
+    """Gives a more formatted output for the input 'report'"""
     water = resources["water"]
     milk = resources["milk"]
     coffee = resources["coffee"]
@@ -11,6 +12,7 @@ def format_report():
 
 
 def calculate_money():
+    """Calculates the money put into the machine"""
     quarters = int(input("How many quarters?: "))
     dimes = int(input("How many dimes?: "))
     nickles = int(input("How many nickles?: "))
@@ -20,6 +22,7 @@ def calculate_money():
 
 
 def check_resources(drink_ingredients):
+    """Checks if the resources of the machine are enough to make the coffee"""
     for item in drink_ingredients:
         if drink_ingredients[item] > resources[item]:
             print(f"Sorry, there is not enough {item}")
@@ -28,6 +31,7 @@ def check_resources(drink_ingredients):
 
 
 def is_transaction_successful(money, drink):
+    """Checks if the money is enough to pay for the coffee"""
     if drink["cost"] > money:
         print("Sorry, that's not enough money. Money refunded.")
         return False
@@ -38,6 +42,7 @@ def is_transaction_successful(money, drink):
 
 
 def deduct_ingredients(drink_ingredients):
+    """Deducts ingredients from the machine"""
     if drink_ingredients["water"] == 50: 
         resources["water"] -= drink_ingredients["water"]
         resources["coffee"] -= drink_ingredients["coffee"]
