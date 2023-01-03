@@ -8,8 +8,7 @@ def format_report():
     water = resources["water"]
     milk = resources["milk"]
     coffee = resources["coffee"]
-    global money
-    return f"Water: {water}ml\nMilk: {milk}ml\nCoffee: {coffee}g\nMoney: ${money}"
+    return f"Water: {water}ml\nMilk: {milk}ml\nCoffee: {coffee}g\nMoney: ${machine_money}"
 
 
 def calculate_money():
@@ -17,8 +16,8 @@ def calculate_money():
     dimes = int(input("How many dimes?: "))
     nickles = int(input("How many nickles?: "))
     pennies = int(input("How many pennies?: "))
-    machine_money = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
-    return machine_money
+    money = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
+    return money
 
 
 def check_resources(order_ingredients):
@@ -32,11 +31,11 @@ def check_resources(order_ingredients):
 def is_transaction_successful(money, drink):
     if drink["cost"] > money:
         print("Sorry, that's not enough money. Money refunded.")
+        return False
     else:
-        global machine_money
-        machine_money += drink["cost"]
         change = money - drink["cost"]
         print(f"Here is your change: ${change}")
+        return True
 
 
 machine_is_off = False
@@ -50,4 +49,5 @@ while not machine_is_off:
         drink = MENU[choice]
         if check_resources(drink["ingredients"]):
             money = calculate_money()
-            is_transaction_successful(money, drink)
+            if is_transaction_successful(money, drink):
+                machine_money += drink["cost"]
