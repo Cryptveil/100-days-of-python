@@ -5,10 +5,10 @@ machine_money = 0.0
 
 def format_report():
     """Gives a more formatted output for the input 'report'"""
-    water = resources["water"]
-    milk = resources["milk"]
-    coffee = resources["coffee"]
-    return f"Water: {water}ml\nMilk: {milk}ml\nCoffee: {coffee}g\nMoney: ${machine_money}"
+    print(f"Water: {resources['water']}ml")
+    print(f"Milk: {resources['milk']}ml")
+    print(f"Coffee: {resources['coffee']}g")
+    print(f"Money: ${machine_money}")
 
 
 def calculate_money():
@@ -58,7 +58,7 @@ while not machine_is_off:
     if choice == "off":
         machine_is_off = True
     elif choice == "report": 
-        print (format_report())
+        format_report()
     else:
         drink = MENU[choice]
         if check_resources(drink["ingredients"]):
