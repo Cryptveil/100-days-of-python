@@ -19,9 +19,9 @@ def calculate_money():
     return money
 
 
-def check_resources(order_ingredients):
-    for item in order_ingredients:
-        if order_ingredients[item] >= resources[item]:
+def check_resources(drink_ingredients):
+    for item in drink_ingredients:
+        if drink_ingredients[item] >= resources[item]:
             print(f"Sorry, there is not enough {item}")
             return False
     return True
@@ -34,10 +34,14 @@ def is_transaction_successful(money, drink):
     else:
         change = money - drink["cost"]
         print(f"Here is your change: ${change:.2f}")
-        global machine_money
-        machine_money += drink["cost"]
         return True
 
+
+def deduct_ingredients(drink_ingredients):
+    resources["water"] -= drink_ingredients["water"]
+    resources["milk"] -= drink_ingredients["milk"]
+    resources["coffee"] -= drink_ingredients["coffee"]
+    
 
 machine_is_off = False
 while not machine_is_off:
@@ -50,4 +54,7 @@ while not machine_is_off:
         drink = MENU[choice]
         if check_resources(drink["ingredients"]):
             money = calculate_money()
-            is_transaction_successful(money, drink)
+            if is_transaction_successful(money, drink):
+                machine_money += drink["cost"]
+                deduct_ingredients(drink["ingredients"])
+                print(f"Here is your {choice}, enjoy!")
