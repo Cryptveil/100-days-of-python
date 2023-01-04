@@ -6,7 +6,7 @@ class QuizBrain():
 
 
     def still_has_questions(self):
-        return question_number <= len(self.question_list)
+        return self.question_number <= len(self.question_list)
 
 
     def next_question(self):
