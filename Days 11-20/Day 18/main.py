@@ -1,6 +1,7 @@
 import turtle
 import colorgram as cg
 
-cg.extract("image.jpg", 6)
+color_list = cg.extract("image.jpg", 6)
 
+print(color_list)
 
