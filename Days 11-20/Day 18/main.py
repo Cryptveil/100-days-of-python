@@ -16,6 +16,7 @@ color_list = [(233, 227, 220), (203, 160, 110), (214, 228, 238),
 raphael = turtle_module.Turtle()
 raphael.speed("fastest")
 raphael.penup()
+raphael.hideturtle()
 raphael.setheading(225)
 raphael.forward(250)
 raphael.setheading(0)
