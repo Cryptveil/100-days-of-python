@@ -1,12 +1,22 @@
-import turtle
-import colorgram as cg
+import turtle as turtle_module
+import random
 
-rgb_colors = []
-color_list = cg.extract("image.jpg", 30)
+turtle_module.colormode(255)
+color_list = [(233, 227, 220), (203, 160, 110), (214, 228, 238),
+              (239, 218, 228), (216, 235, 226), (125, 168, 192),
+              (56, 105, 140), (189, 144, 164), (140, 68, 93),
+              (132, 178, 157), (149, 86, 58), (222, 203, 126),
+              (57, 122, 89), (171, 162, 49), (187, 89, 114),
+              (130, 32, 52), (73, 161, 133), (207, 92, 68),
+              (49, 163, 184), (224, 171, 188), (68, 30, 50),
+              (68, 37, 24), (156, 211, 195), (233, 172, 160),
+              (32, 43, 70), (39, 56, 109), (107, 119, 168),
+              (148, 209, 220), (131, 35, 26), (180, 185, 217)]
 
-for color in color_list:
-    r = color.rgb.r
-    g = color.rgb.g
-    b = color.rgb.b
-    new_color = (r, g, b)
-    rgb_colors.append(new_color)
+raphael = turtle_module.Turtle()
+
+raphael.dot(20, random.choice(color_list))
+
+
+screen = turtle_module.Screen()
+screen.exitonclick()
