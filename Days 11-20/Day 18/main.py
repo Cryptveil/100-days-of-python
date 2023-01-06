@@ -2,7 +2,7 @@ import turtle
 import colorgram as cg
 
 rgb_colors = []
-color_list = cg.extract("image.jpg", 6)
+color_list = cg.extract("image.jpg", 30)
 
 for color in color_list:
     r = color.rgb.r
@@ -10,4 +10,3 @@ for color in color_list:
     b = color.rgb.b
     new_color = (r, g, b)
     rgb_colors.append(new_color)
-print(rgb_colors)
