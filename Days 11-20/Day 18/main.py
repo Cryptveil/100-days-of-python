@@ -14,10 +14,21 @@ color_list = [(233, 227, 220), (203, 160, 110), (214, 228, 238),
               (148, 209, 220), (131, 35, 26), (180, 185, 217)]
 
 raphael = turtle_module.Turtle()
+raphael.setheading(225)
+raphael.forward(250)
+raphael.setheading(0)
+number_of_dots = 100
 
-for _ in range(10):
+for dot_count in range(1, number_of_dots):
     raphael.dot(20, random.choice(color_list))
     raphael.forward(50)
+
+    if dot_count % 10 == 0:
+        raphael.setheading(90)
+        raphael.forward(50)
+        raphael.setheading(180)
+        raphael.forward(500)
+        raphael.setheading(0)
 
 
 screen = turtle_module.Screen()
