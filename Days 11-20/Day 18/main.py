@@ -15,7 +15,9 @@ color_list = [(233, 227, 220), (203, 160, 110), (214, 228, 238),
 
 raphael = turtle_module.Turtle()
 
-raphael.dot(20, random.choice(color_list))
+for _ in range(10):
+    raphael.dot(20, random.choice(color_list))
+    raphael.forward(50)
 
 
 screen = turtle_module.Screen()
