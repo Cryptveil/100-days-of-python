@@ -1,4 +1,5 @@
 from turtle import Turtle
+MOVE_DISTANCE = 20
 STARTING_POSITIONS = [(0, 0), (-20,0), (-40, 0)]
 
 
@@ -25,5 +26,5 @@ class Snake():
             new_x = self.snake_size[segment_number - 1].xcor()
             new_y = self.snake_size[segment_number - 1].ycor()
             self.snake_size[segment_number].goto(new_x, new_y)
-        self.snake_size[0].forward(20)
+        self.snake_size[0].forward(MOVE_DISTANCE)
 
