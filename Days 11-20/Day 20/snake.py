@@ -34,25 +34,21 @@ class Snake():
 
 
     def up(self):
-        CURRENT_POSITION = self.head.heading()
-        if CURRENT_POSITION == RIGHT or CURRENT_POSITION == LEFT:
+        if self.head.heading() != DOWN:
             self.head.setheading(UP)
 
 
     def down(self):
-        CURRENT_POSITION = self.head.heading()
-        if CURRENT_POSITION == RIGHT or CURRENT_POSITION == LEFT:
+        if self.head.heading() != UP:
             self.head.setheading(DOWN)
 
 
     def left(self):
-        CURRENT_POSITION = self.head.heading()
-        if CURRENT_POSITION == UP or CURRENT_POSITION == DOWN:
+        if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
 
 
     def right(self):
-        CURRENT_POSITION = self.head.heading()
-        if CURRENT_POSITION == UP or CURRENT_POSITION == DOWN:
+        if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
  
