@@ -1,6 +1,10 @@
 from turtle import Turtle
 MOVE_DISTANCE = 20
 STARTING_POSITIONS = [(0, 0), (-20,0), (-40, 0)]
+RIGHT = 0
+UP = 90
+LEFT = 180
+DOWN = 270
 
 
 class Snake():
@@ -9,6 +13,7 @@ class Snake():
     def __init__(self):
         self.snake_size = []
         self.create_snake()
+        self.head = self.snake_size[0]
 
 
     def create_snake(self):
@@ -25,29 +30,29 @@ class Snake():
             new_x = self.snake_size[segment_number - 1].xcor()
             new_y = self.snake_size[segment_number - 1].ycor()
             self.snake_size[segment_number].goto(new_x, new_y)
-        self.snake_size[0].forward(MOVE_DISTANCE)
+        self.head.forward(MOVE_DISTANCE)
 
 
     def up(self):
-        CURRENT_POSITION = self.snake_size[0].heading()
-        if CURRENT_POSITION == 0 or CURRENT_POSITION == 180:
-            self.snake_size[0].setheading(90)
+        CURRENT_POSITION = self.head.heading()
+        if CURRENT_POSITION == RIGHT or CURRENT_POSITION == LEFT:
+            self.head.setheading(UP)
 
 
     def down(self):
-        CURRENT_POSITION = self.snake_size[0].heading()
-        if CURRENT_POSITION == 0 or CURRENT_POSITION == 180:
-            self.snake_size[0].setheading(270)
+        CURRENT_POSITION = self.head.heading()
+        if CURRENT_POSITION == RIGHT or CURRENT_POSITION == LEFT:
+            self.head.setheading(DOWN)
 
 
     def left(self):
-        CURRENT_POSITION = self.snake_size[0].heading()
-        if CURRENT_POSITION == 90 or CURRENT_POSITION == 270:
-            self.snake_size[0].setheading(180)
+        CURRENT_POSITION = self.head.heading()
+        if CURRENT_POSITION == UP or CURRENT_POSITION == DOWN:
+            self.head.setheading(LEFT)
 
 
     def right(self):
-        CURRENT_POSITION = self.snake_size[0].heading()
-        if CURRENT_POSITION == 90 or CURRENT_POSITION == 270:
-            self.snake_size[0].setheading(0)
+        CURRENT_POSITION = self.head.heading()
+        if CURRENT_POSITION == UP or CURRENT_POSITION == DOWN:
+            self.head.setheading(RIGHT)
  
