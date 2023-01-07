@@ -9,7 +9,7 @@ I'm separating all the projects in clusters of 10 days each for better visibilit
 
 - [x] Challenge started!
 - [x] 10 days complete!
-- [ ] 20 days complete!
+- [x] 20 days complete!
 - [ ] 30 days complete!
 - [ ] 40 days complete!
 - [ ] 50 days complete!
