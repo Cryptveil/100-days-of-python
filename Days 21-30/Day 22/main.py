@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 # Creates the screen
@@ -10,6 +11,7 @@ screen.setup(width=800, height=600, startx=250, starty=250)
 screen.title("Pong")
 screen.tracer(0)  # Stops the animation
 
+scoreboard = Scoreboard()
 ball = Ball()
 left_paddle = Paddle((-350, 0))  # Creates the paddle
 right_paddle = Paddle((350, 0))  # Creates the paddle
