@@ -26,7 +26,7 @@ screen.onkey(left_paddle.down, "s")
 game_is_on = True
 while game_is_on:
     screen.update()  # Makes the animation runs again
-    time.sleep(0.07)
+    time.sleep(ball.move_speed)
     ball.move()
 
     # Detects collision with the top and bottom walls
@@ -44,9 +44,11 @@ while game_is_on:
     # Checks if the right_paddle missed the ball and resets the ball's position
     if ball.xcor() > 380:
         ball.reset_position()
+        scoreboard.l_point()
 
     # Checks if the left_paddle missed the ball and resets the ball's position
     if ball.xcor() < -380:
         ball.reset_position()
+        scoreboard.r_point()
 
 screen.exitonclick()
