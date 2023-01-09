@@ -5,4 +5,8 @@ class Scoreboard(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.write(align="center", font=("Arial", 8, "normal"))
+        self.penup()
+        self.hideturtle()
+        self.color("white")
+        self.write("Score: ", False, align="center", font=("Arial", 20, "normal"))
+        self.goto(0, 280)
