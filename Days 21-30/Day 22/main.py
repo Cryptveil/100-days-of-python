@@ -8,11 +8,16 @@ screen.setup(width=800, height=600, startx=250, starty=250)
 screen.title("Pong")
 screen.tracer(0)  # Stops the animation
 
-paddle2 = Paddle()  # Creates the paddle
+left_paddle = Paddle((-350, 0))  # Creates the paddle
+right_paddle = Paddle((350, 0))  # Creates the paddle
 
 screen.listen()  # Listens to input
-screen.onkey(paddle2.up, "Up")
-screen.onkey(paddle2.down, "Down")
+screen.onkey(right_paddle.up, "Up")
+screen.onkey(right_paddle.down, "Down")
+screen.onkey(left_paddle.up, "w")
+screen.onkey(left_paddle.down, "s")
+
+# Main loop of the game
 game_is_on = True
 while game_is_on:
     screen.update()  # Makes the animation runs again
