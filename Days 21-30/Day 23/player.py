@@ -11,7 +11,7 @@ class Player(Turtle):
         self.shape("turtle")
         self.penup()
         self.color("black")
-        self.goto(STARTING_POSITION)
+        self.reset_position()
         self.setheading(90)
 
 
