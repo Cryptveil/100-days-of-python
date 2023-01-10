@@ -5,21 +5,24 @@ from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
 
+# Creates the screen
 screen = Screen()
 screen.setup(width=600, height=600, startx=300, starty=300)
 screen.tracer(0)
 
+# Initializes all the objects
 scoreboard = Scoreboard()
 player = Player()
 car_manager = CarManager()
 
-
+# Listens for player input
 screen.listen()
 screen.onkey(player.move, "Up")
 
+# Main loop
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(0.08)
     screen.update()
     car_manager.create_car()
     car_manager.move()
