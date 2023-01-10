@@ -6,6 +6,7 @@ MOVE_DISTANCE = 10
 class Player(Turtle):
 
     def __init__(self):
+        """Initializes the turtle"""
         super().__init__() 
         self.shape("turtle")
         self.penup()
@@ -15,9 +16,11 @@ class Player(Turtle):
 
 
     def move(self):
+        """Moves the turtle"""
         self.forward(MOVE_DISTANCE)
 
 
     def reset_position(self):
+        """Resets turtle position when game over or when next level"""
         self.goto(STARTING_POSITION)
 

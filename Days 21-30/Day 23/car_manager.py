@@ -9,11 +9,13 @@ class CarManager():
 
 
     def __init__(self):
+        """Initializes our cars"""
         self.car_list = []
         self.create_car()
         
 
     def create_car(self):
+        """Creates a new car"""
         new_car = Turtle(shape="square")
         new_car.shapesize(stretch_wid=1, stretch_len=2)
         new_car.penup()
@@ -24,6 +26,7 @@ class CarManager():
 
 
     def move(self):
+        """Moves the car"""
         for car in self.car_list:
             new_x = car.xcor() + STARTING_MOVE_DISTANCE
             new_y = car.ycor() + STARTING_MOVE_DISTANCE
