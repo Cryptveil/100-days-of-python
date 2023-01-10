@@ -27,7 +27,4 @@ class CarManager:
 
     def move(self):
         """Moves the car"""
-        for car in self.car_list:
-            new_x = car.xcor() + STARTING_MOVE_DISTANCE
-            new_y = car.ycor() + STARTING_MOVE_DISTANCE
-            self.goto(new_x, new_y)
+        pass
