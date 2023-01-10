@@ -5,7 +5,7 @@ STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
 
-class CarManager():
+class CarManager:
 
 
     def __init__(self):
@@ -21,7 +21,7 @@ class CarManager():
         new_car.penup()
         new_car.color(random.choice(COLORS))
         new_car.setheading(180)
-        new_car.goto(random.randint(-280, 280), random.randint(-280, 280))
+        new_car.goto(random.randint(-280, 280), random.randint(-250, 250))
         self.car_list.append(new_car)
 
 
