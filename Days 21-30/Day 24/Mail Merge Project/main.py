@@ -15,6 +15,8 @@ with open("./Input/Letters/starting_letter.txt") as letter:
     for name in name_list:
         stripped_name = name.strip()
         new_letter = letter_content.replace("[name]", stripped_name)
+        with open(f"./Output/ReadyToSend/letter_for_{stripped_name}.txt", mode="w") as finished_letter:
+            finished_letter.write(new_letter)
+            
 
-        print(new_letter)
 
