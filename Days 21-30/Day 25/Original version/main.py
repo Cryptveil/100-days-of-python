@@ -21,7 +21,7 @@ if answer_state in state_list:
     t.penup()
     state_data = data[data.state == answer_state]
     t.goto(int(state_data.x), int(state_data.y))
-    t.write(state_data.state)
+    t.write(answer_state)
 
 
 turtle.mainloop()
