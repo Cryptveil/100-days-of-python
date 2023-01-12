@@ -23,7 +23,7 @@ while len(guessed_states) < 27:
             if state not in guessed_states:
                 missing_states.append(state)
         new_data = pd.DataFrame(missing_states)
-        new_data.to_csv("missing states.csv")
+        new_data.to_csv("estados para aprender.csv")
         break
     if answer_state in state_list:
         t = turtle.Turtle()
