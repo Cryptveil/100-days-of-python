@@ -14,10 +14,10 @@ guessed_states = []
 
 while len(guessed_states) < 27:
     answer_state = screen.textinput(
-        title=f"{len(guessed_states)}/{len(state_list)} States Correct",
-        prompt="What's another state's name?").title()
+        title=f"{len(guessed_states)}/{len(state_list)} Estados Corretos",
+        prompt="Qual o próximo estado?").title()
 
-    if answer_state == "Exit":
+    if answer_state == "Sair":
         missing_states = []
         for state in state_list:
             if state not in guessed_states:
