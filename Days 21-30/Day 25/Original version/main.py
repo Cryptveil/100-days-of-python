@@ -1,5 +1,5 @@
 import turtle
-import pandas
+import pandas as pd
 
 screen = turtle.Screen()
 screen.title("U.S States Game")
@@ -9,11 +9,4 @@ screen.addshape(image)
 turtle.shape(image)
 
 
-def get_mouse_click_coordinate(x, y):
-    print(x, y)
-
-
-turtle.onscreenclick(get_mouse_click_coordinate)
-
-
-turtle.mainloop()
+answer_state = screen.textinput(title="Guess the State", prompt="What's another state's name?").capitalize()
