@@ -1,4 +1,5 @@
 ,0
+<<<<<<< HEAD
 0,Alagoas
 1,Amapa
 2,Amazonas
@@ -25,3 +26,8 @@
 23,Sao Paulo
 24,Sergipe
 25,Tocantins
+=======
+0,Maranhao
+1,Piaui
+2,Sergipe
+>>>>>>> 3cc4b1d0fe5b94af566737079001f04dc1386282
