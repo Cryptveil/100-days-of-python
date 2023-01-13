@@ -24,10 +24,7 @@ while len(guessed_states) < 27:
         prompt="Qual o próximo estado?").title()
 
     if answer_state == "Sair":
-        missing_states = []
-        for state in state_list:
-            if state not in guessed_states:
-                missing_states.append(state)
+        missing_states = [state for state in state_list if state not in guessed_states]
         new_data = pd.DataFrame(missing_states)
         new_data.to_csv("estados para aprender.csv")
         break

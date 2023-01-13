@@ -17,5 +17,3 @@ with open("./Input/Letters/starting_letter.txt") as letter:
         with open(f"./Output/ReadyToSend/letter_for_{stripped_name}.txt", mode="w") as finished_letter:
             finished_letter.write(new_letter)
             
-
-
