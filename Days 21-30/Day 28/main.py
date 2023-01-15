@@ -43,7 +43,7 @@ button = Button(text="Reset")
 button.grid(column=2, row=2)
 
 # Checkmark label
-label = Label(text="✔", fg=GREEN, highlightthickness=0, bg=YELLOW)
+label = Label(text="✔", fg=GREEN, font=(FONT_NAME, 25, "bold"), highlightthickness=0, bg=YELLOW)
 label.grid(column=1, row=3)
 
 
