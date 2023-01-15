@@ -46,6 +46,7 @@ def start_timer():
 
 def countdown(count):
 
+    global reps
     count_min = math.floor(count / 60)
     count_sec = count % 60
     if count_sec < 10:
@@ -57,8 +58,11 @@ def countdown(count):
     if count > 0:
         window.after(1000, countdown, count - 1)
     else:
+        if reps % 2 == 0:
+            checkmark_label.config(text="✔", fg=GREEN,
+                                   font=(FONT_NAME, 25, "bold"),
+                                   highlightthickness=0, bg=YELLOW)
         start_timer()
-
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -89,8 +93,9 @@ button = Button(text="Reset")
 button.grid(column=2, row=2)
 
 # Checkmark label
-label = Label(text="✔", fg=GREEN, font=(FONT_NAME, 25, "bold"), highlightthickness=0, bg=YELLOW)
-label.grid(column=1, row=3)
+checkmark_label = Label(fg=GREEN, font=(FONT_NAME, 25, "bold"),
+                        highlightthickness=0, bg=YELLOW)
+checkmark_label.grid(column=1, row=3)
 
 
 window.mainloop()
