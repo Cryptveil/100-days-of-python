@@ -30,5 +30,15 @@ canvas.grid(column=1, row=1)
 label = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"), highlightthickness=0, bg=YELLOW)
 label.grid(column=1, row=0)
 
+button = Button(text="Start")
+button.grid(column=0, row=2)
+
+button = Button(text="Reset")
+button.grid(column=2, row=2)
+
+label = Label(text="✔", fg=GREEN, font=(FONT_NAME, 35, "bold"), highlightthickness=0, bg=YELLOW)
+label.grid(column=1, row=3)
+
+
 window.mainloop()
 
