@@ -27,7 +27,7 @@ canvas.create_image(100, 112, image=tomato_image)
 canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 
-label = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"))
+label = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"), highlightthickness=0, bg=YELLOW)
 label.grid(column=1, row=0)
 
 window.mainloop()
