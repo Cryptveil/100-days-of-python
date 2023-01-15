@@ -25,17 +25,17 @@ def start_timer():
 
     if reps % 8 == 0:
         countdown(long_break_sec)
-        title_label.config(text="Long Break", fg=RED,
+        title_label.config(text="Break", fg=RED,
                            font=(FONT_NAME, 35, "bold"),
                            highlightthickness=0, bg=YELLOW)
     elif reps % 2 == 0:
         countdown(short_break_sec)
-        title_label.config(text="Short Break", fg=PINK,
+        title_label.config(text="Break", fg=PINK,
                            font=(FONT_NAME, 35, "bold"),
                            highlightthickness=0, bg=YELLOW)
     else:
         countdown(work_sec)
-        title_label.config(text="Short Break", fg=PINK,
+        title_label.config(text="Work", fg=PINK,
                            font=(FONT_NAME, 35, "bold"),
                            highlightthickness=0, bg=YELLOW)
 
