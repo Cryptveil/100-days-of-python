@@ -16,7 +16,28 @@ LONG_BREAK_MIN = 20
 
 
 def start_timer():
-    countdown(5 * 60)
+    global reps
+    reps += 1
+    
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    if reps % 8 == 0:
+        countdown(long_break_sec)
+        title_label.config(text="Long Break", fg=RED,
+                           font=(FONT_NAME, 35, "bold"),
+                           highlightthickness=0, bg=YELLOW)
+    elif reps % 2 == 0:
+        countdown(short_break_sec)
+        title_label.config(text="Short Break", fg=PINK,
+                           font=(FONT_NAME, 35, "bold"),
+                           highlightthickness=0, bg=YELLOW)
+    else:
+        countdown(work_sec)
+        title_label.config(text="Short Break", fg=PINK,
+                           font=(FONT_NAME, 35, "bold"),
+                           highlightthickness=0, bg=YELLOW)
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
@@ -34,6 +55,8 @@ def countdown(count):
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
         window.after(1000, countdown, count - 1)
+    else:
+        start_timer()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -51,9 +74,10 @@ timer_text = canvas.create_text(100, 130, text="00:00", fill="white",
 canvas.grid(column=1, row=1)
 
 # Timer label
-label = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"),
-              highlightthickness=0, bg=YELLOW)
-label.grid(column=1, row=0)
+title_label = Label(text="Timer", fg=GREEN,
+                             font=(FONT_NAME, 35, "bold"),
+                             highlightthickness=0, bg=YELLOW)
+title_label.grid(column=1, row=0)
 
 # Start button
 button = Button(text="Start", command=start_timer)
