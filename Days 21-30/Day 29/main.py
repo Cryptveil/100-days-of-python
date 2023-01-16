@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import pyperclip
-# ---------------------------- PASSWORD GENERATOR ------------------------------- #
+# ---------------------------- PASSWORD GENERATOR --------------------------- #
 
 
 def generate_password():
@@ -36,20 +36,20 @@ def save_password():
     email = email_input.get()
     password = password_input.get()
     if len(website) > 0 and len(password) > 0 and len(email) > 0:
-        is_ok = messagebox.askokcancel(title=website, message="These are the" 
-                               f"details entered:\nEmail: {email}"
-                               f"\n Password: {password}\n"
-                               "Is this ok to save?")
+        is_ok = messagebox.askokcancel(title=website, message="These are the"
+                                       f"details entered:\nEmail: {email}"
+                                       f"\n Password: {password}\n"
+                                       "Is this ok to save?")
 
         if is_ok:
             with open("data.txt", "a") as data_file:
-                data_file.write(f"{website_input.get()} | {email_input.get()} |"
-                                f"{password_input.get()}\n")
+                data_file.write(f"{website} | {email} |"
+                                f"{password}\n")
             website_input.delete(0, END)
             email_input.delete(0, END)
             password_input.delete(0, END)
     else:
-        messagebox.showerror(title="You dumbo", message="Don't leave any of the"
+        messagebox.showerror(title="You dumbo", message="Dont leave any of the"
                              " fields empty!!!\nI get angry when u do!!!!!!!!")
 
 
