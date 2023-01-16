@@ -83,8 +83,9 @@ password_label.grid(column=0, row=3)
 password_input = Entry(width=21)
 password_input.grid(column=1, row=3)
 
-generate_password = Button(text="Generate Password", command=generate_password)
-generate_password.grid(column=2, row=3)
+generate_password_button = Button(text="Generate Password!",
+                                  command=generate_password)
+generate_password_button.grid(column=2, row=3)
 
 add_button = Button(text="Add", width=36, command=save_password)
 add_button.grid(column=1, row=4, columnspan=2)
