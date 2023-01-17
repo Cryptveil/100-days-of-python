@@ -5,12 +5,12 @@ of Code: The Complete Python Pro Bootcamp for 2023](https://www.udemy.com/course
 
 I'm separating all the projects in clusters of 10 days each for better visibility.
 
-**Milestones:**
+## Milestones:
 
 - [x] Challenge started!
 - [x] 10 days complete!
 - [x] 20 days complete!
-- [ ] 30 days complete!
+- [x] 30 days complete!
 - [ ] 40 days complete!
 - [ ] 50 days complete!
 - [ ] 60 days complete!
