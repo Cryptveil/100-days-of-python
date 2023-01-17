@@ -3,6 +3,25 @@ from tkinter import messagebox
 import random
 import pyperclip
 import json
+
+
+def search_password():
+    website = website_input.get()
+    try:
+        with open("data.json", "r") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showerror(title="Error", message="No data file found!")
+    else:
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"Email: {email}\n"
+                                f"Password: {password}")
+        else:
+            messagebox.showinfo(title="Nope", message="LOOOOOOOOL U STUPID")
+
+
 # ---------------------------- PASSWORD GENERATOR --------------------------- #
 
 
@@ -88,9 +107,9 @@ canvas.grid(column=1, row=0)
 website_label = Label(text="Website:")
 website_label.grid(column=0, row=1)
 
-website_input = Entry(width=35)
+website_input = Entry(width=21)
 website_input.focus()
-website_input.grid(column=1, row=1, columnspan=2)
+website_input.grid(column=1, row=1)
 
 email_label = Label(text="Email/Username:")
 email_label.grid(column=0, row=2)
@@ -103,6 +122,9 @@ password_label.grid(column=0, row=3)
 
 password_input = Entry(width=21)
 password_input.grid(column=1, row=3)
+
+search_button = Button(text="Search", width=14, command=search_password)
+search_button.grid(column=2, row=1)
 
 generate_password_button = Button(text="Generate Password!",
                                   command=generate_password)
