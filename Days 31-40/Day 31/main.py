@@ -8,14 +8,24 @@ FONT_WORD = ("Arial", 60, "bold")
 
 data = pd.read_csv("data/french_words.csv")
 french_dict = pd.DataFrame.to_dict(data, orient="records")
-new_word = random.choice(french_dict)
-french_word = new_word["French"]
+new_word = {}
 
 
 def next_card():
+    global new_word, flip_timer
+    window.after_cancel(flip_timer)
     new_word = random.choice(french_dict)
     french_word = new_word["French"]
-    canvas.itemconfig(word, text=french_word)
+    canvas.itemconfig(card_image, image=card_front)
+    canvas.itemconfig(language, text="French", fill="black")
+    canvas.itemconfig(word, text=french_word, fill="black")
+    flip_timer = window.after(3000, card_translation)
+
+
+def card_translation():
+    canvas.itemconfig(card_image, image=card_back)
+    canvas.itemconfig(language, fill="white", text="English")
+    canvas.itemconfig(word, fill="white", text=new_word["English"])
 
 
 window = tk.Tk()
@@ -28,9 +38,9 @@ card_front = tk.PhotoImage(file="images/card_front.png")
 card_back = tk.PhotoImage(file="images/card_back.png")
 
 canvas = tk.Canvas(width=800, height=526, bg=BACKGROUND_COLOR)
-canvas.create_image(400, 263, image=card_front)
-language = canvas.create_text(400, 150, text="French", font=FONT_LANGUAGE)
-word = canvas.create_text(400, 263, text=french_word,
+card_image = canvas.create_image(400, 263, image=card_front)
+language = canvas.create_text(400, 150, text="", font=FONT_LANGUAGE)
+word = canvas.create_text(400, 263, text="",
                           font=FONT_WORD)
 canvas.grid(column=0, row=0, columnspan=2)
 
@@ -41,5 +51,8 @@ correct_button.grid(column=1, row=1)
 wrong_button = tk.Button(image=wrong_image, highlightthickness=0,
                          command=next_card)
 wrong_button.grid(column=0, row=1)
+
+next_card()
+flip_timer = window.after(3000, card_translation)
 
 window.mainloop()
