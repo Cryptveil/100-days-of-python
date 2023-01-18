@@ -1,10 +1,16 @@
 import tkinter as tk
+import pandas as pd
 
 BACKGROUND_COLOR = "#B1DDC6"
+FONT_LANGUAGE = ("Arial", 40, "italic")
+FONT_WORD = ("Arial", 60, "bold")
+
+data = pd.read_csv("data/french_words.csv")
+word_dict = pd.DataFrame.to_dict(data)
 
 window = tk.Tk()
 window.title("Flash Card Program")
-window.config(padx=50, pady=50)
+window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
 correct_image = tk.PhotoImage(file="images/right.png")
 wrong_image = tk.PhotoImage(file="images/wrong.png")
@@ -13,6 +19,9 @@ card_back = tk.PhotoImage(file="images/card_back.png")
 
 canvas = tk.Canvas(width=800, height=526, bg=BACKGROUND_COLOR)
 canvas.create_image(400, 263, image=card_front)
+language = canvas.create_text(400, 150, text="French", font=FONT_LANGUAGE)
+word = canvas.create_text(400, 263, text=word_dict["French"][0],
+                          font=FONT_WORD)
 canvas.grid(column=0, row=0, columnspan=2)
 
 correct_button = tk.Button(image=correct_image, highlightthickness=0)
