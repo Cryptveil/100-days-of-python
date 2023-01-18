@@ -32,6 +32,8 @@ window = tk.Tk()
 window.title("Flash Card Program")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
+flip_timer = window.after(3000, card_translation)
+
 correct_image = tk.PhotoImage(file="images/right.png")
 wrong_image = tk.PhotoImage(file="images/wrong.png")
 card_front = tk.PhotoImage(file="images/card_front.png")
@@ -53,6 +55,5 @@ wrong_button = tk.Button(image=wrong_image, highlightthickness=0,
 wrong_button.grid(column=0, row=1)
 
 next_card()
-flip_timer = window.after(3000, card_translation)
 
 window.mainloop()
