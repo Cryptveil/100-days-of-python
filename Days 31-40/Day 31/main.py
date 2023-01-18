@@ -7,13 +7,13 @@ FONT_LANGUAGE = ("Arial", 40, "italic")
 FONT_WORD = ("Arial", 60, "bold")
 
 data = pd.read_csv("data/french_words.csv")
-word_dict = pd.DataFrame.to_dict(data, orient="records")
-new_word = random.choice(word_dict)
+french_dict = pd.DataFrame.to_dict(data, orient="records")
+new_word = random.choice(french_dict)
 french_word = new_word["French"]
 
 
 def next_card():
-    new_word = random.choice(word_dict)
+    new_word = random.choice(french_dict)
     french_word = new_word["French"]
     canvas.itemconfig(word, text=french_word)
 
