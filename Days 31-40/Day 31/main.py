@@ -29,7 +29,7 @@ def right_button_function():
                           fill="black")
     else:
         data = pd.DataFrame(french_dict)
-        data.to_csv("data/to_learn.csv")
+        data.to_csv("data/to_learn.csv", index=False)
     finally:
         next_card()
 
