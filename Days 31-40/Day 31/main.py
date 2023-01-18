@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import pandas as pd
 import random
 
@@ -13,6 +14,9 @@ try:
 except FileNotFoundError:
     original_data = pd.read_csv("data/french_words.csv")
     french_dict = original_data.to_dict(orient="records")
+except pd.errors.EmptyDataError:
+    original_data = pd.read_csv("data/french_words.csv")
+    french_dict = original_data.to_dict(orient="records")
 else:
     french_dict = pd.DataFrame.to_dict(data, orient="records")
 
@@ -21,12 +25,13 @@ def right_button_function():
     try:
         french_dict.remove(new_word)
     except ValueError:
-        canvas.itemconfig(language, text="You did it!", fill="black")
-        canvas.itemconfig(word, text="There are no more words!", fill="black")
+        messagebox.showinfo(title="You did it!",
+                            text="There are no more words to learn in the"
+                            "database!")
     except IndexError:
-        canvas.itemconfig(language, text="You did it!", fill="black")
-        canvas.itemconfig(word, text="There are\n no more words!",
-                          fill="black")
+        messagebox.showinfo(title="You did it!",
+                            text="There are no more words to learn in the"
+                            "database!")
     else:
         data = pd.DataFrame(french_dict)
         data.to_csv("data/to_learn.csv", index=False)
