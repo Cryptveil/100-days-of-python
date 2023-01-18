@@ -11,7 +11,7 @@ wrong_image = tk.PhotoImage(file="images/wrong.png")
 card_front = tk.PhotoImage(file="images/card_front.png")
 card_back = tk.PhotoImage(file="images/card_back.png")
 
-canvas = tk.Canvas(width=800, height=526)
+canvas = tk.Canvas(width=800, height=526, bg=BACKGROUND_COLOR)
 canvas.create_image(400, 263, image=card_front)
 canvas.grid(column=0, row=0, columnspan=2)
 
