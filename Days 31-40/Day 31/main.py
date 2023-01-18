@@ -5,10 +5,33 @@ import random
 BACKGROUND_COLOR = "#B1DDC6"
 FONT_LANGUAGE = ("Arial", 40, "italic")
 FONT_WORD = ("Arial", 60, "bold")
-
-data = pd.read_csv("data/french_words.csv")
-french_dict = pd.DataFrame.to_dict(data, orient="records")
 new_word = {}
+french_dict = {}
+
+try:
+    data = pd.read_csv("data/to_learn.csv")
+except FileNotFoundError:
+    original_data = pd.read_csv("data/french_words.csv")
+    french_dict = original_data.to_dict(orient="records")
+else:
+    french_dict = pd.DataFrame.to_dict(data, orient="records")
+
+
+def right_button_function():
+    try:
+        french_dict.remove(new_word)
+    except ValueError:
+        canvas.itemconfig(language, text="You did it!", fill="black")
+        canvas.itemconfig(word, text="There are no more words!", fill="black")
+    except IndexError:
+        canvas.itemconfig(language, text="You did it!", fill="black")
+        canvas.itemconfig(word, text="There are\n no more words!",
+                          fill="black")
+    else:
+        data = pd.DataFrame(french_dict)
+        data.to_csv("data/to_learn.csv")
+    finally:
+        next_card()
 
 
 def next_card():
@@ -47,7 +70,7 @@ word = canvas.create_text(400, 263, text="",
 canvas.grid(column=0, row=0, columnspan=2)
 
 correct_button = tk.Button(image=correct_image, highlightthickness=0,
-                           command=next_card)
+                           command=right_button_function)
 correct_button.grid(column=1, row=1)
 
 wrong_button = tk.Button(image=wrong_image, highlightthickness=0,
