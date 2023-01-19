@@ -27,4 +27,4 @@ current_month = now.month
 current_day = now.day
 today = (current_month, current_day)
 
-print(birthday_dict)
+print(birthday_dict[today])
