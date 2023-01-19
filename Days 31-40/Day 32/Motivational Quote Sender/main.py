@@ -14,7 +14,7 @@ RECIPIENT = ""
 
 now = dt.datetime.now()
 today = now.weekday()
-if today == 3:
+if today == 0:
     with smtplib.SMTP(SMTP_SERVER, port=PORT) as connection:
         connection.starttls()
         connection.login(user=EMAIL, password=PASSWORD)
