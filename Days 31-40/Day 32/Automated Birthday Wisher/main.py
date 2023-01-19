@@ -1,5 +1,7 @@
 import random
 import pandas as pd
+import datetime as dt
+
 
 letter_list = []
 
@@ -17,4 +19,12 @@ with open("letter_templates/letter_3.txt") as letter_3_file:
 
 random_letter_template = random.choice(letter_list)
 
+data = pd.read_csv("birthdays.csv")
+birthday_dict = {(row.month, row.day): row for (index, row) in data.iterrows()}
 
+now = dt.datetime.now()
+current_month = now.month
+current_day = now.day
+today = (current_month, current_day)
+
+print(birthday_dict)
