@@ -1,7 +1,12 @@
 import random
 import pandas as pd
 import datetime as dt
+import smtplib
 
+EMAIL = ""
+PASSWORD = ""
+SMTP_SERVER = "smtp.gmail.com"
+PORT = 587
 
 letter_list = []
 
@@ -27,4 +32,13 @@ current_month = now.month
 current_day = now.day
 today = (current_month, current_day)
 
-print(birthday_dict[today])
+if today in birthday_dict:
+    person = birthday_dict[today]
+    recipient = person["email"]
+    chosen_letter = "".join(random_letter_template)
+    chosen_letter = chosen_letter.replace("[NAME]", person["name"])
+
+with smtplib.SMTP(SMTP_SERVER, port=PORT) as connection:
+    connection.starttls()
+    connection.login(user=EMAIL, password=PASSWORD)
+    connection.sendmail(from_addr=EMAIL, to_addrs=recipient, msg=chosen_letter)
