@@ -1,13 +1,20 @@
-##################### Extra Hard Starting Project ######################
+import random
+import pandas as pd
 
-# 1. Update the birthdays.csv
+letter_list = []
 
-# 2. Check if today matches a birthday in the birthdays.csv
+with open("letter_templates/letter_1.txt") as letter_1_file:
+    letter_1 = letter_1_file.readlines()
+    letter_list.append(letter_1)
 
-# 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
+with open("letter_templates/letter_2.txt") as letter_2_file:
+    letter_2 = letter_2_file.readlines()
+    letter_list.append(letter_2)
 
-# 4. Send the letter generated in step 3 to that person's email address.
+with open("letter_templates/letter_3.txt") as letter_3_file:
+    letter_3 = letter_3_file.readlines()
+    letter_list.append(letter_3)
 
-
+random_letter_template = random.choice(letter_list)
 
 
