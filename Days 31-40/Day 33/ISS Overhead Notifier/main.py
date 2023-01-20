@@ -21,9 +21,9 @@ iss_longitude = float(data["iss_position"]["longitude"])
 # Your position is within +5 or -5 degrees of the ISS position.
 def iss_position():
     longitude_floor = math.floor(MY_LONG-5)
-    longitude_ceiling = math.floor(MY_LONG+5)
+    longitude_ceiling = math.ceil(MY_LONG+5)
     latitude_floor = math.floor(MY_LAT-5)
-    latitude_ceiling = math.floor(MY_LAT+5)
+    latitude_ceiling = math.ceil(MY_LAT+5)
 
     if iss_longitude in range(longitude_floor, longitude_ceiling):
         if iss_latitude in range(latitude_floor, latitude_ceiling):
