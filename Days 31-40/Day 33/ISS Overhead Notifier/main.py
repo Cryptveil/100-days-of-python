@@ -1,7 +1,7 @@
 import requests
 from datetime import datetime
-import math
 import smtplib
+import time
 
 MY_LAT = -16.680519
 MY_LONG = -49.256130
@@ -10,48 +10,54 @@ PASSWORD = ""
 SMTP_SERVER = "smtp.gmail.com"
 PORT = 587
 
-response = requests.get(url="http://api.open-notify.org/iss-now.json")
-response.raise_for_status()
-data = response.json()
 
-iss_latitude = float(data["iss_position"]["latitude"])
-iss_longitude = float(data["iss_position"]["longitude"])
-
-
-# Your position is within +5 or -5 degrees of the ISS position.
 def iss_position():
-    longitude_floor = math.floor(MY_LONG-5)
-    longitude_ceiling = math.ceil(MY_LONG+5)
-    latitude_floor = math.floor(MY_LAT-5)
-    latitude_ceiling = math.ceil(MY_LAT+5)
+    response = requests.get(url="http://api.open-notify.org/iss-now.json")
+    response.raise_for_status()
+    data = response.json()
 
-    if iss_longitude in range(longitude_floor, longitude_ceiling):
-        if iss_latitude in range(latitude_floor, latitude_ceiling):
-            return True
-    return False
+    iss_latitude = float(data["iss_position"]["latitude"])
+    iss_longitude = float(data["iss_position"]["longitude"])
+    check_1 = MY_LAT-5 <= iss_latitude <= MY_LAT+5
+    check_2 = MY_LONG-5 <= iss_longitude <= MY_LONG+5
+
+    if check_1 and check_2:
+        return True
 
 
-parameters = {
-    "lat": MY_LAT,
-    "lng": MY_LONG,
-    "formatted": 0,
-}
+def is_night_time():
 
-response = requests.get(
-        "https://api.sunrise-sunset.org/json",
-        params=parameters,
-        )
+    parameters = {
+        "lat": MY_LAT,
+        "lng": MY_LONG,
+        "formatted": 0,
+    }
 
-response.raise_for_status()
-data = response.json()
-sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
-sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
+    response = requests.get(
+            "https://api.sunrise-sunset.org/json",
+            params=parameters,
+            )
 
-time_now = datetime.now()
-current_hour = time_now.hour
+    response.raise_for_status()
+    data = response.json()
+    sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
+    sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
 
-if iss_position() and current_hour < sunrise or current_hour > sunset:
-    with smtplib.SMTP(SMTP_SERVER, port=PORT) as connection:
-        connection.starttls()
-        connection.login(user=EMAIL, password=PASSWORD)
-        connection.sendmail(from_addr=EMAIL, to_addrs=EMAIL, msg="Look up!")
+    time_now = datetime.now()
+    current_hour = time_now.hour
+
+    if current_hour >= sunset or current_hour <= sunrise:
+        return True
+
+
+while True:
+    time.sleep(60)
+    if is_night_time() and iss_position():
+        with smtplib.SMTP(SMTP_SERVER, port=PORT) as connection:
+            connection.starttls()
+            connection.login(user=EMAIL, password=PASSWORD)
+            connection.sendmail(
+                    from_addr=EMAIL,
+                    to_addrs=EMAIL,
+                    msg="Subject: Look up!\n\nThe ISS is above you in the sky."
+                                )
