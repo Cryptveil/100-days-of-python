@@ -11,7 +11,14 @@ data = response.json()
 iss_latitude = float(data["iss_position"]["latitude"])
 iss_longitude = float(data["iss_position"]["longitude"])
 
+
+print(iss_latitude)
 # Your position is within +5 or -5 degrees of the ISS position.
+#def iss_position():
+#    if iss_longitude in range(MY_LONG-5, MY_LONG+5):
+#        pass
+
+
 
 parameters = {
     "lat": MY_LAT,
