@@ -20,12 +20,14 @@ class QuizInterface:
         self.true_button = tk.Button(
                 image=correct_image,
                 highlightthickness=0,
+                command=self.correct
                 )
         self.true_button.grid(column=0, row=2)
         false_image = tk.PhotoImage(file="images/false.png")
         self.false_button = tk.Button(
                 image=false_image,
                 highlightthickness=0,
+                command=self.false
                 )
         self.false_button.grid(column=1, row=2)
         self.canvas = tk.Canvas(width=300, height=250, bg="white")
@@ -44,5 +46,32 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
-        q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question_text, text=q_text)
+        if self.quiz.still_has_questions():
+            self.canvas.config(bg="white")
+            self.score_text.config(
+                    text=f"Score {self.quiz.score}"
+                    )
+            q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.question_text, text=q_text)
+        else:
+            self.canvas.itemconfig(
+                    self.question_text,
+                    text="You've reached the end of the quiz!"
+                    )
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
+
+    def correct(self):
+        is_right = self.quiz.check_answer("True")
+        self.give_feedback(is_right)
+
+    def false(self):
+        is_right = self.quiz.check_answer("False")
+        self.give_feedback(is_right)
+
+    def give_feedback(self, is_right):
+        if is_right:
+            self.canvas.config(bg="green")
+        else:
+            self.canvas.config(bg="red")
+        self.window.after(1000, self.get_next_question)
