@@ -1,10 +1,14 @@
 import requests
+from twilio.rest import Client
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
-# Free API key so doesn't matter if it goes public, have fun!
+# Free API keys so doesn't matter if it goes public, have fun!
 ALPHA_API = "WPH2B0O2G81ANNKY"
 NEWS_API = "965c78ee57b540dfaa818c267bc796ae"
+
+TWILIO_SID = ""
+TWILIO_AUTH = ""
 
 alpha_params = {
         "function": "TIME_SERIES_DAILY_ADJUSTED",
@@ -37,25 +41,13 @@ if difference_percentage >= 4:
 
     news_data = news_results.json()["articles"]
     three_articles = news_data[:3]
-
-# STEP 3: Use https://www.twilio.com
-# Send a seperate message with the percentage change and each article's title
-# and description to your phone number.
-
-
-# Optional: Format the SMS message like this:
-"""
-TSLA: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?.
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds
-and prominent investors are required to file by the SEC The 13F filings show
-the funds' and investors' portfolio positions as of March 31st, near the
-height of the coronavirus market crash.
-or
-"TSLA: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?.
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds
-and prominent investors are required to file by the SEC The 13F filings show
-the funds' and investors' portfolio positions as of March 31st, near the
-height of the coronavirus market crash.
-"""
+    news = [f"Headline: {news_data['title']}.\n"
+            f"Brief: {news_data['description']}" for news_data in
+            three_articles]
+    client = Client(TWILIO_SID, TWILIO_AUTH)
+    for article in news:
+        message = client.messages.create(
+                body=article,
+                from_="",
+                to=""
+                )
