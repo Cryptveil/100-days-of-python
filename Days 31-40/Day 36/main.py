@@ -25,22 +25,18 @@ difference = abs(yesterday_closing_price - day_before_closing_price)
 difference_percentage = (difference*100)/yesterday_closing_price
 
 if difference_percentage >= 4:
-    print("Get News")
-# STEP 2: Use https://newsapi.org
-# Instead of printing ("Get News"), actually get the first 3 news pieces for
-# the COMPANY_NAME.
-news_params = {
-        "q": "Tesla",
-        "apiKey": NEWS_API,
-        }
+    news_params = {
+            "qInTitle": "Tesla",
+            "apiKey": NEWS_API,
+            }
 
-news_results = requests.get(
-        "https://newsapi.org/v2/everything",
-        params=news_params,
-        )
+    news_results = requests.get(
+            "https://newsapi.org/v2/everything",
+            params=news_params,
+            )
 
-news_data = news_results.json()
-print(news_data)
+    news_data = news_results.json()["articles"]
+    three_articles = news_data[:3]
 
 # STEP 3: Use https://www.twilio.com
 # Send a seperate message with the percentage change and each article's title
