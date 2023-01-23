@@ -4,6 +4,7 @@ STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 # Free API key so doesn't matter if it goes public, have fun!
 ALPHA_API = "WPH2B0O2G81ANNKY"
+NEWS_API = "965c78ee57b540dfaa818c267bc796ae"
 
 alpha_params = {
         "function": "TIME_SERIES_DAILY_ADJUSTED",
@@ -11,11 +12,11 @@ alpha_params = {
         "apikey": ALPHA_API,
         }
 
-results = requests.get(
+alpha_results = requests.get(
         "https://www.alphavantage.co/query",
         params=alpha_params,
         )
-alpha_data = results.json()["Time Series (Daily)"]
+alpha_data = alpha_results.json()["Time Series (Daily)"]
 data_list = [value for (key, value) in alpha_data.items()]
 yesterday_closing_price = float(data_list[0]["4. close"])
 day_before_closing_price = float(data_list[1]["4. close"])
@@ -23,11 +24,23 @@ day_before_closing_price = float(data_list[1]["4. close"])
 difference = abs(yesterday_closing_price - day_before_closing_price)
 difference_percentage = (difference*100)/yesterday_closing_price
 
-if difference_percentage >= 5:
+if difference_percentage >= 4:
     print("Get News")
 # STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for
 # the COMPANY_NAME.
+news_params = {
+        "q": "Tesla",
+        "apiKey": NEWS_API,
+        }
+
+news_results = requests.get(
+        "https://newsapi.org/v2/everything",
+        params=news_params,
+        )
+
+news_data = news_results.json()
+print(news_data)
 
 # STEP 3: Use https://www.twilio.com
 # Send a seperate message with the percentage change and each article's title
