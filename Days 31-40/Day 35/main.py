@@ -1,19 +1,16 @@
-#Note! For the code to work you need to replace all the placeholders with
-#Your own details. e.g. account_sid, lat/lon, from/to phone numbers.
-
 import requests
 import os
 from twilio.rest import Client
 from twilio.http.http_client import TwilioHttpClient
 
 OWM_Endpoint = "https://api.openweathermap.org/data/2.5/onecall"
-api_key = os.environ.get("OWM_API_KEY")
-account_sid = "YOUR ACCOUNT SID"
-auth_token = os.environ.get("AUTH_TOKEN")
+api_key = os.environ.get("0e30afb40ba29f432efe6584ffe444a7")
+account_sid = ""
+auth_token = os.environ.get("")
 
 weather_params = {
-    "lat": "YOUR LATITUDE",
-    "lon": "YOUR LONGITUDE",
+    "lat": -16.680519,
+    "lon": -49.256130,
     "appid": api_key,
     "exclude": "current,minutely,daily"
 }
@@ -37,8 +34,8 @@ if will_rain:
     client = Client(account_sid, auth_token, http_client=proxy_client)
     message = client.messages \
         .create(
-        body="It's going to rain today. Remember to bring an ☔️",
-        from_="YOUR TWILIO VIRTUAL NUMBER",
-        to="YOUR TWILIO VERIFIED REAL NUMBER"
-    )
+            body="It's going to rain today. Remember to bring an ☔️",
+            from_="",
+            to=""
+        )
     print(message.status)
