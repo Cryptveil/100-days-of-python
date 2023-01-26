@@ -8,6 +8,7 @@ flight_search = FlightSearch()
 notification_manager = NotificationManager()
 sheet_data = data_manager.get_destination_data()
 
+# Starts from London because this was the asingment
 ORIGIN_CITY_IATA = "LON"
 
 if sheet_data[0]["iataCode"] == "":
@@ -29,5 +30,8 @@ for destination in sheet_data:
 
 if flight.price < destination["lowestPrice"]:
     notification_manager.send_sms(
-        message=f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
+        message=f"Low price alert! Only £{flight.price} to fly from"
+        f"{flight.origin_city}-{flight.origin_airport} to "
+        f"{flight.destination_city}-{flight.destination_airport},"
+        f"from {flight.out_date} to {flight.return_date}."
     )
