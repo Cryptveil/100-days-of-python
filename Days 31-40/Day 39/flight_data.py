@@ -1,4 +1,5 @@
 class FlightData():
+    """Contains all the relevant data for the flight"""
 
     def __init__(self, price,
                  origin_city, origin_airport,

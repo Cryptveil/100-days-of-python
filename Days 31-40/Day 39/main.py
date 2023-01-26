@@ -11,6 +11,7 @@ sheet_data = data_manager.get_destination_data()
 # Starts from London because this was the asingment
 ORIGIN_CITY_IATA = "LON"
 
+# If the sheet is empty, populates it with the airport codes
 if sheet_data[0]["iataCode"] == "":
     for row in sheet_data:
         row["iataCode"] = flight_search.flight_code(row["city"])
@@ -20,6 +21,7 @@ if sheet_data[0]["iataCode"] == "":
 tomorrow = datetime.now() + timedelta(days=1)
 six_months_from_today = datetime.now() + timedelta(days=(6*30))
 
+# Checks for a specific flight
 for destination in sheet_data:
     flight = flight_search.check_flights(
             ORIGIN_CITY_IATA,
@@ -28,6 +30,7 @@ for destination in sheet_data:
             to_time=six_months_from_today,
             )
 
+# Twilio message stuff
 if flight.price < destination["lowestPrice"]:
     notification_manager.send_sms(
         message=f"Low price alert! Only £{flight.price} to fly from"

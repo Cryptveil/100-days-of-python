@@ -6,6 +6,7 @@ TEQUILA_API_KEY = ""
 
 
 class FlightSearch:
+    """Searches for specific flight"""
 
     def flight_code(self, city_name):
         location_endpoint = f"{TEQUILA_ENDPOINT}/locations/query"

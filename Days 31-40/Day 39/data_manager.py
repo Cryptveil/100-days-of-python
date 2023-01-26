@@ -4,6 +4,7 @@ SHEET_ENDPOINT = ""
 
 
 class DataManager:
+    """Does all the spreadsheet manipulation"""
 
     def __init__(self):
         self.destination_data = {}

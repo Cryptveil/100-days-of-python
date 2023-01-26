@@ -7,6 +7,7 @@ TWILIO_VERIFIED_NUMBER = ""
 
 
 class NotificationManager:
+    """Twilio shenanigans"""
 
     def __init__(self):
         self.client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
