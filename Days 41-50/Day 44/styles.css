@@ -1,0 +1,17 @@
+div {
+    font-family: sans-serif;
+    color: #c09;
+}
+
+div h1:hover {
+    background-color: lime;
+}
+
+div input, div label {
+    display: block;
+}
+
+div td:hover {
+    color: white;
+    background-color: black;
+}
