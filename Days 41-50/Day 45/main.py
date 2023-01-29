@@ -17,7 +17,7 @@ for heading in news:
 
 scores = soup.find_all(class_="score")
 for score in scores:
-    upvotes = score.getText().split(" ")[0]
+    upvotes = int(score.getText().split(" ")[0])
     article_upvotes.append(upvotes)
 
 largest_number = max(article_upvotes)
