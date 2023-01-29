@@ -20,6 +20,13 @@ for score in scores:
     upvotes = score.getText().split(" ")[0]
     article_upvotes.append(upvotes)
 
-print(article_texts)
-print(article_links)
-print(article_upvotes)
+largest_number = max(article_upvotes)
+largest_index = article_upvotes.index(largest_number)
+
+print(article_texts[largest_index])
+print(article_links[largest_index])
+print(f"Likes: {largest_number}")
+
+# print(article_texts)
+# print(article_links)
+# print(article_upvotes)
