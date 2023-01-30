@@ -1,6 +1,6 @@
-## 100 Movies that You Must Watch
+# 100 Movies that You Must Watch
 
-# Objective
+## Objective
 
 Scrape the top 100 movies of all time from a website. Generate a text file called `movies.txt` that lists the movie titles in ascending order (starting from 1). 
 The result should look something like this:
