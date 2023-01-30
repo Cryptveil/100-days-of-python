@@ -7,3 +7,12 @@ URL = "https://web.archive.org/web/20200518073855/https://www.empireonline.com/m
 
 response = requests.get(URL)
 soup = BeautifulSoup(response.text, "html.parser")
+movies = soup.find_all(name="h3", class_="title")
+
+movie_list = []
+for entry in movies:
+    movie_text = entry.getText()
+    movie_list.append(movie_text)
+
+result = movie_list[::-1]
+print(result)
