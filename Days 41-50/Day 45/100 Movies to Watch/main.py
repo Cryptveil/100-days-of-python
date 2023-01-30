@@ -15,4 +15,6 @@ for entry in movies:
     movie_list.append(movie_text)
 
 result = movie_list[::-1]
-print(result)
+
+with open("movies.txt", "w") as file:
+    file.write(result)
