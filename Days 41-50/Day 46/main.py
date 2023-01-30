@@ -13,3 +13,4 @@ song_names = soup.find_all(name="h3",
                            class_="lrv-u-font-size-16")
 
 song_list = [song.getText().strip("\n\t") for song in song_names]
+
