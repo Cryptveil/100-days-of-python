@@ -17,4 +17,5 @@ for entry in movies:
 result = movie_list[::-1]
 
 with open("movies.txt", "w") as file:
-    file.write(result)
+    for line in result:
+        file.write(line)
