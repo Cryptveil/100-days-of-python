@@ -5,4 +5,5 @@ URL = "https://web.archive.org/web/20200518073855/https://www.empireonline.com/m
 
 # Write your code below this line 👇
 
-
+response = requests.get(URL)
+soup = BeautifulSoup(response.text, "html.parser")
