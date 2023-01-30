@@ -14,7 +14,7 @@ for entry in movies:
     movie_text = entry.getText()
     movie_list.append(movie_text)
 
-result = movie_list[::-1]
+result = "\n".join(movie_list[::-1])
 
 with open("movies.txt", "w") as file:
     for line in result:
