@@ -4,7 +4,7 @@ import smtplib
 import os
 
 AMAZON_URL = "https://tinyurl.com/526but8b"
-EMAIL = "hjgameplays@gmail.com"
+EMAIL = ""
 GMAIL_TOKEN = os.environ["GMAIL_TOKEN"]
 SMTP_SERVER = "smtp.gmail.com"
 PORT = 587
