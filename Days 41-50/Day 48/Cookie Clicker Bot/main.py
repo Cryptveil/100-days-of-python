@@ -14,11 +14,13 @@ driver.get("http://orteil.dashnet.org/experiments/cookie/")
 
 cookie = driver.find_element(By.ID, "cookie")
 timeout_5_minutes = time() + 300
+
 while time() < timeout_5_minutes:
     timeout_5_seconds = time() + 5
 
     while time() < timeout_5_seconds:
         cookie.click()
+
     store_items = driver.find_elements(By.CSS_SELECTOR, "#store div")
     for item in range(len(store_items)-1, 0, -1):
         try:
