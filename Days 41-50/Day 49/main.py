@@ -25,31 +25,31 @@ time.sleep(3)
 all_listings = driver.find_elements(By.CSS_SELECTOR, ".job-card-list__title")
 
 for listing in all_listings:
-        listing.click()
+    listing.click()
+    time.sleep(2)
+
+    try:
+        job_button = driver.find_element(By.CSS_SELECTOR, ".jobs-apply-button")
+        job_button.click()
         time.sleep(2)
+        send_curriculum_button = driver.find_element(By.CLASS_NAME, "jobs-apply-button--top-card")
+        send_curriculum_button.click()
+        time.sleep(2)
+        select_curriculum = driver.find_element(By.CSS_SELECTOR, ".jobs-resume-picker__resume-btn-container #ember1976")
+        select_curriculum.click()
+        submit_button = driver.find_element(By.CSS_SELECTOR, "footer span")
 
-        try:
-                job_button = driver.find_element(By.CSS_SELECTOR, ".jobs-apply-button")
-                job_button.click()
-                time.sleep(2)
-                send_curriculum_button = driver.find_element(By.CLASS_NAME, "jobs-apply-button--top-card")
-                send_curriculum_button.click()
-                time.sleep(2)
-                select_curriculum = driver.find_element(By.CSS_SELECTOR, ".jobs-resume-picker__resume-btn-container #ember1976")
-                select_curriculum.click()
-                submit_button = driver.find_element(By.CSS_SELECTOR, "footer span")
+        if submit_button.get_attribute("data-control-name") == "continue_unify":
+            close_button = driver.find_element(By.CLASS_NAME, "artdeco-modal__dismiss")
+            close_button.click()
+            time.sleep(2)
+            discard_button = driver.find_elements(By.CLASS_NAME, "artdeco-modal__confirm-dialog-btn")[1]
+            discard_button.click()
+            print("Complex application, skipped.")
+            continue
+        else:
+            submit_button.click()
 
-                if submit_button.get_attribute("data-control-name") == "continue_unify":
-                        close_button = driver.find_element(By.CLASS_NAME, "artdeco-modal__dismiss")
-                        close_button.click()
-                        time.sleep(2)
-                        discard_button = driver.find_elements(By.CLASS_NAME, "artdeco-modal__confirm-dialog-btn")[1]
-                        discard_button.click()
-                        print("Complex application, skipped.")
-                        continue
-                else:
-                        submit_button.click()
-
-        except NoSuchElementException:
-                print("No application button, skipped.")
-                continue
+    except NoSuchElementException:
+        print("No application button, skipped.")
+        continue
