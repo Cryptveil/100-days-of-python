@@ -4,4 +4,5 @@ Days 41 to 44 are super easy, just an introduction to HTML and to CSS, both
 of which I'm pretty familiar with and for that reason I will complete all of
 them in one day.
 
-Day 45 onwards will be using Beautiful Soup and doing more with Python.
+Day 45 onwards will be using Beautiful Soup, Selenium and doing more with
+Python.
