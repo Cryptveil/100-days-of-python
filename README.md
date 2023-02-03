@@ -12,7 +12,7 @@ I'm separating all the projects in clusters of 10 days each for better visibilit
 - [x] 20 days complete!
 - [x] 30 days complete!
 - [x] 40 days complete!
-- [ ] 50 days complete!
+- [x] 50 days complete!
 - [ ] 60 days complete!
 - [ ] 70 days complete!
 - [ ] 80 days complete!
