@@ -19,7 +19,7 @@ That said, here are the projects I've developed for this module:
   Spotify playlist.
 
 - Day 47: Created an automated Amazon price checker that sends an email
-  whenever the price of a determined product reaches a price point.
+  whenever the price of a determined product reaches a certain point.
 
 - Day 48: Cookie clicker bot.
 
