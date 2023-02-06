@@ -1,3 +1,5 @@
-I will be travelling today so the code I uploaded is incomplete.
+# This section goes a little more into web development
 
-This code will be complete on the 5th as well as day 52's code.
+From days 51 to 53, Selenium will be used for more automation stuff.
+
+From day 54 onwards, Flask will be used in order to build web pages.
