@@ -10,7 +10,7 @@ CORRECT_GIF = "https://media.giphy.com/media/4T7e4DmcrP9du/giphy.gif"
 
 
 @app.route("/")
-def hello_world():
+def home_page():
     return "<h1>Guess a number between 0 and 9</h1>" \
             f"<img src='{WELCOME_GIF}'>"
 
