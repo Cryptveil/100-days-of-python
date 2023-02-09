@@ -1,36 +1,3 @@
-* {
-    box-sizing: border-box;    
-}
-
-img {
-    display: block;
-    max-width: 100%; 
-    margin: auto;
-}
-
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background: #daeedf;
-    text-align: center;
-    font-size: 1.3rem;
-}
-
-#img-caption {
-    display: block;
-    margin: 0 0 5px 0;
-}
-
-.img-link {
-    display: inline-block;
-}
-
-.img-div {
-    background-color: #a3afa6;
-    padding-top: 20px;
-    padding-bottom: 2px;
-}
-
-.quote {
-    font-style: italic;
+h1 {
+    color: cyan;
 }
