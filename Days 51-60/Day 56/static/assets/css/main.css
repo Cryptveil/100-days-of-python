@@ -782,7 +782,7 @@
 		align-self: flex-end;
 		width: 100%;
 		padding: 1.5em 0 0 0;
-		color: rgba(255, 255, 255, 0.75);
+		color: black;
 		cursor: default;
 		text-align: center;
 	}
