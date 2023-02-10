@@ -35,5 +35,12 @@ def get_blog():
     return render_template("blog.html", posts=all_posts)
 
 
+@app.route("/post/<int:blog_id>")
+def get_post(blog_id):
+    response = requests.get(BLOG_URL)
+    post = response.json()[blog_id-1]
+    return render_template("post.html", post=post)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
