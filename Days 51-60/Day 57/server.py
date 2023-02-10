@@ -4,6 +4,7 @@ import requests
 
 AGIFY_URL = "https://api.agify.io?name="
 GENDERIZE_URL = "https://api.genderize.io?name="
+BLOG_URL = "https://api.npoint.io/c790b4d5cab58020d391"
 
 app = Flask(__name__)
 
@@ -25,6 +26,13 @@ def guess(name):
                            name=person_name,
                            age=person_age,
                            gender=person_gender)
+
+
+@app.route("/blog")
+def blog():
+    response = requests.get(BLOG_URL)
+    all_posts = response.json()
+    return render_template("blog.html", posts=all_posts)
 
 
 if __name__ == "__main__":
