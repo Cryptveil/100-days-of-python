@@ -29,7 +29,7 @@ def guess(name):
 
 
 @app.route("/blog")
-def blog():
+def get_blog():
     response = requests.get(BLOG_URL)
     all_posts = response.json()
     return render_template("blog.html", posts=all_posts)
