@@ -8,7 +8,8 @@ POSTS_URL = "https://api.npoint.io/c790b4d5cab58020d391"
 @app.route("/")
 def home():
     response = requests.get(POSTS_URL).json()
-    return render_template("index.html")
+    return render_template("index.html",
+                           post=response)
 
 
 @app.route("/about")
