@@ -22,5 +22,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/post/<int:blog_id>")
+def post(blog_id):
+    response = requests.get(POSTS_URL).json()[blog_id-1]
+    return render_template("post.html", post=response)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
