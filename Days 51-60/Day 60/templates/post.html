@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% include 'header.html' %}
+    {% include 'header.html' %}    
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
@@ -20,47 +20,37 @@
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('static/assets/img/home-bg.jpg')">
+        <header class="masthead" style="background-image: url('../static/assets/img/post-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="site-heading">
-                            <h1>Grellheist's Blog</h1>
-                            <span class="subheading">OHH HELL NAH SPUNCHBOB</span>
+                        <div class="post-heading">
+                            <h1>{{post["title"]}}</h1>
+                            <h2 class="subheading">{{post["subtitle"]}}</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="https://github.com/grellheist">Grellheist</a>
+                                on August 24, 2022
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- Main Content-->
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <!-- Post preview-->
-                    {% for post in posts: %}
-                    <div class="post-preview">
-                        <a href="{{url_for('post', blog_id=post['id'])}}">
-                            <h2 class="post-title">{{post["title"]}}</h2>
-                            <h3 class="post-subtitle">{{post["subtitle"]}}</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Grellheist</a>
-                            on September 24, 2022
-                        </p>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>{{post["body"]}}</p>
                     </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    {% endfor %}
-                    <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
                 </div>
             </div>
-        </div>
+        </article>
         <!-- Footer-->
         {% include 'footer.html' %}
         <!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>        <!-- Core theme JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>        <!-- Core theme JS-->
         <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
     </body>
 </html>
