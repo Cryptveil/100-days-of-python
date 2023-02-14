@@ -6,14 +6,10 @@ From day 54 onwards, Flask will be used in order to build proper web pages.
 
 Here are some of the most interesting projects I've built during these 10 days:
 
-| ![Image Alt Text](https://i.imgur.com/R2MetvG.png) |
+| ![Image Alt Text](https://i.imgur.com/aBHDtxv.png) |
 |:--:|
-| *Treasure Island game (too short but had potential to be good)* |
+| *Blog using a Bootstrap template, all the backend was done by me* |
 
-| ![Image Alt Text](https://i.imgur.com/AkDhSiz.png) |
+| ![Image Alt Text](https://i.imgur.com/OXPjPXZ.png) |
 |:--:|
-| *Hangman Game* |
-
-| ![Image Alt Text](https://i.imgur.com/SVcPI97.png) |
-|:--:|
-| *Caesar Cipher program* |
+| *Bootstrap tinder clone* |
