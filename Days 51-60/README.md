@@ -4,6 +4,8 @@ From days 51 to 53, Selenium will be used for more automation stuff.
 
 From day 54 onwards, Flask will be used in order to build proper web pages.
 
+Also, from day 59 onwards, the difficulty listed is `advanced`.
+
 Here are some of the most interesting projects I've built during these 10 days:
 
 | ![Image Alt Text](https://i.imgur.com/aBHDtxv.png) |
