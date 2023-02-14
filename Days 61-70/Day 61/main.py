@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, Length
 from flask import Flask, render_template
+from flask_bootstrap import Bootstrap5
 
 
 class Login(FlaskForm):
@@ -13,6 +14,7 @@ class Login(FlaskForm):
 
 app = Flask(__name__)
 app.secret_key = "1234"
+Bootstrap5(app)
 FAKE_ADMIN_EMAIL = "admin@email.com"
 FAKE_ADMIN_PASSWORD = "12345678"
 
