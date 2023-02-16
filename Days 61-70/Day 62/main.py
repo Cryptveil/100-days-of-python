@@ -42,14 +42,14 @@ def add_cafe():
     form = CafeForm()
     if form.validate_on_submit():
         new_data = [
-            form.cafe.data,
-            form.location.data,
-            form.open.data,
-            form.close.data,
-            form.coffee.data,
-            form.wifi.data,
-            form.power.data
-        ]
+                form.cafe.data,
+                form.location.data,
+                form.open.data,
+                form.close.data,
+                form.coffee.data,
+                form.wifi.data,
+                form.power.data
+                ]
         with open('cafe-data.csv', 'a', encoding="utf8") as csv_file:
             writer = csv.writer(csv_file, delimiter=',')
             writer.writerow(new_data)
