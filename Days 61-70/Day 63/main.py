@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
+import sqlite3
 
 app = Flask(__name__)
 all_books = []
+db = sqlite3.connect("books-collection.db")
 
 
 @app.route('/')
 def home():
-    return render_template("index.html", books=all_books)
+    return render_template("index.html", book_list=all_books)
 
 
 @app.route("/add", methods=["GET", "POST"])
