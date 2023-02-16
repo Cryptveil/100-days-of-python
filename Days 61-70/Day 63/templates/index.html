@@ -11,7 +11,7 @@
     {% else: %}
     <ul>
         {% for book in book_list %}
-        <li>{{book.title}} - {{book.author}} - {{book.rating}}/10</li>
+        <li>{{book.title}} - {{book.author}} - {{book.rating}}/10 <a href="{{url_for('edit', book_id=book.id)}}">Edit Rating</a></li>
         {% endfor %}
     </ul>
     {% endif %}

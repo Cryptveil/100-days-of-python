@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>Edit entry</h1>
+        <p>Book Name: {{book.title}}</p>
+        <p>Current Rating is: {{book.rating}}</p>
+        <input type="number" name="rating">
+        <a href="{{url_for('home')}}">Change Rating</a>
+    </body>
+</html>
