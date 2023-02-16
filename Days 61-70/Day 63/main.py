@@ -37,8 +37,20 @@ def add():
 
 @app.route("/edit/<book_id>", methods=["GET", "POST"])
 def edit(book_id):
-    book = Book.query.filter_by(id=book_id).first()
+    book = Book.query.get(book_id)
+    if request.method == "POST":
+        book.rating = request.form["rating"]
+        db.session.commit()
+        return redirect(url_for("home"))
     return render_template("edit.html", book=book)
+
+
+@app.route("/delete/<book_id>")
+def delete(book_id):
+    book = Book.query.get(book_id)
+    db.session.delete(book)
+    db.session.commit()
+    return redirect(url_for("home"))
 
 
 if __name__ == "__main__":
