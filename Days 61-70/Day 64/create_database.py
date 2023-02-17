@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class Book(db.Model):
+class Movie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), unique=True, nullable=False)
     year = db.Column(db.Integer, nullable=False)
@@ -18,13 +18,25 @@ class Book(db.Model):
     img_url = db.Column(db.String(1000), nullable=False, unique=True)
 
     def __repr__(self):
-        return f"<Book {self.title}>"
+        return f"<Movie {self.title}>"
 
 
 with app.app_context():
     db.create_all()
 
 with app.app_context():
-    new_book = Book(id=1, title="Harry Potter", author="J. K. Rowling", rating=9.3)
-    db.session.add(new_book)
+    new_movie = Movie(
+        title="Phone Booth",
+        year=2002,
+        description="Publicist Stuart Shepard finds himself trapped in a phone\
+                booth, pinned down by an extortionist's sniper rifle. Unable\
+                to leave or receive outside help, Stuart's negotiation with\
+                the caller leads to a jaw-dropping climax.",
+        rating=7.3,
+        ranking=10,
+        review="My favourite character was the caller.",
+        img_url="https://image.tmdb.org/t/p/w500/\
+                tjrX2oWRCM3Tvarz38zlZM7Uc10.jpg"
+    )
+    db.session.add(new_movie)
     db.session.commit()
