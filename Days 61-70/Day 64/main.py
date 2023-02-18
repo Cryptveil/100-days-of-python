@@ -88,12 +88,9 @@ def add():
 def find_movie():
     movie_id_api = request.args.get("id")
     if movie_id_api:
-        movie_url = f"{SEARCH_URL}/{movie_id_api}"
-        response = requests.get(movie_url,
-                                params={
-                                    "api_key": API_KEY,
-                                    "language": "en-US"
-                                    })
+        movie_url = f'https://api.themoviedb.org/3/movie/{movie_id_api}?' \
+                + f'api_key={API_KEY}'
+        response = requests.get(movie_url)
         data = response.json()
         new_movie = Movie(
                 title=data["title"],
@@ -104,6 +101,7 @@ def find_movie():
         db.session.add(new_movie)
         db.session.commit()
         return redirect(url_for("home"))
+    return render_template("edit.html", form=form, movie=data["title"])
 
 
 if __name__ == '__main__':
