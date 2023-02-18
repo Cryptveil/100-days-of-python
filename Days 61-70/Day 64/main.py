@@ -28,14 +28,37 @@ class Movie(db.Model):
         return f"<Movie {self.title}>"
 
 
+class MovieForm(FlaskForm):
+    rating = StringField("Your Rating", validators=[DataRequired()])
+    review = StringField("Your Review", validators=[DataRequired()])
+    submit = SubmitField("Done")
+
+
 @app.route("/")
 def home():
     all_movies = db.session.query(Movie).all()
     return render_template("index.html", movie_list=all_movies)
 
 
-@app.route("/edit/<movie_id>")
+@app.route("/edit/<int:movie_id>", methods=["GET", "POST"])
 def edit(movie_id):
+    movie = Movie.query.get(movie_id)
+    form = MovieForm()
+    if request.method == "POST":
+        movie.rating = form.rating.data
+        movie.review = form.review.data
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("edit.html", movie=movie, form=form)
+
+
+@app.route("/delete/<int:movie_id>")
+def delete(movie_id):
+    pass
+
+
+@app.route("/add")
+def add():
     pass
 
 
