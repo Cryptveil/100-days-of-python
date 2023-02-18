@@ -2,10 +2,13 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, validators
+from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+import os
 import requests
 
+API_KEY = os.environ["TMDB"]
+SEARCH_URL = "https://api.themoviedb.org/3/search/movie"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///movie_collection.db"
@@ -68,8 +71,15 @@ def delete(movie_id):
 @app.route("/add", methods=["GET", "POST"])
 def add():
     form = AddMovie()
-    if request.method == "POST":
-        return redirect(url_for("home"))
+    if form.validate_on_submit():
+        movie_title = form.title.data
+        response = requests.get(SEARCH_URL,
+                                params={
+                                    "api_key": API_KEY,
+                                    "query": movie_title
+                                    })
+        data = response.json()["results"]
+        return render_template("select.html", movie_list=data)
     return render_template("add.html", form=form)
 
 
