@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 Bootstrap5(app)
 
 
-class Movie(db.Model):
+class Movie(db.Model):  # type: ignore
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), unique=True, nullable=False)
     year = db.Column(db.Integer, nullable=False)
@@ -54,12 +54,15 @@ def edit(movie_id):
 
 @app.route("/delete/<int:movie_id>")
 def delete(movie_id):
-    pass
+    movie = Movie.query.get(movie_id)
+    db.session.delete(movie)
+    db.session.commit()
+    return redirect(url_for("home"))
 
 
 @app.route("/add")
 def add():
-    pass
+    return render_template("add.html")
 
 
 if __name__ == '__main__':
