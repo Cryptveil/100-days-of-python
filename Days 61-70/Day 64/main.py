@@ -100,8 +100,7 @@ def find_movie():
                 )
         db.session.add(new_movie)
         db.session.commit()
-        return redirect(url_for("home"))
-    return render_template("edit.html", form=form, movie=data["title"])
+        return redirect(url_for("edit", movie_id=new_movie.id))
 
 
 if __name__ == '__main__':
