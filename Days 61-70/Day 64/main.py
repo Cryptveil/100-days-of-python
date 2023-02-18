@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, validators
 from wtforms.validators import DataRequired
 import requests
 
@@ -28,10 +28,15 @@ class Movie(db.Model):  # type: ignore
         return f"<Movie {self.title}>"
 
 
-class MovieForm(FlaskForm):
+class EditMovie(FlaskForm):
     rating = StringField("Your Rating", validators=[DataRequired()])
     review = StringField("Your Review", validators=[DataRequired()])
     submit = SubmitField("Done")
+
+
+class AddMovie(FlaskForm):
+    title = StringField("Movie Title", validators=[DataRequired()])
+    submit = SubmitField("Add Movie")
 
 
 @app.route("/")
@@ -43,7 +48,7 @@ def home():
 @app.route("/edit/<int:movie_id>", methods=["GET", "POST"])
 def edit(movie_id):
     movie = Movie.query.get(movie_id)
-    form = MovieForm()
+    form = EditMovie()
     if request.method == "POST":
         movie.rating = form.rating.data
         movie.review = form.review.data
@@ -60,9 +65,12 @@ def delete(movie_id):
     return redirect(url_for("home"))
 
 
-@app.route("/add")
+@app.route("/add", methods=["GET", "POST"])
 def add():
-    return render_template("add.html")
+    form = AddMovie()
+    if request.method == "POST":
+        return redirect(url_for("home"))
+    return render_template("add.html", form=form)
 
 
 if __name__ == '__main__':
