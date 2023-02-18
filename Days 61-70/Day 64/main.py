@@ -34,5 +34,10 @@ def home():
     return render_template("index.html", movie_list=all_movies)
 
 
+@app.route("/edit/<movie_id>")
+def edit(movie_id):
+    pass
+
+
 if __name__ == '__main__':
     app.run(debug=True)
