@@ -1,3 +1,4 @@
+from types import new_class
 from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
@@ -9,6 +10,7 @@ import requests
 
 API_KEY = os.environ["TMDB"]
 SEARCH_URL = "https://api.themoviedb.org/3/search/movie"
+API_IMG_URL = "https://image.tmdb.org/t/p/w500"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///movie_collection.db"
@@ -81,6 +83,28 @@ def add():
         data = response.json()["results"]
         return render_template("select.html", movie_list=data)
     return render_template("add.html", form=form)
+
+
+@app.route("/find")  # type: ignore
+def find_movie():
+    movie_id_api = request.args.get("id")
+    if movie_id_api:
+        movie_url = f"{SEARCH_URL}/{movie_id_api}"
+        response = requests.get(movie_url,
+                                params={
+                                    "api_key": API_KEY,
+                                    "language": "en-US"
+                                    })
+        data = response.json()
+        new_movie = Movie(
+                title=data["title"],
+                year=data["release_date"].split("-")[0],
+                img_url=f"{API_IMG_URL}{data['poster_path']}",
+                description=data["overview"]
+                )
+        db.session.add(new_movie)
+        db.session.commit()
+        return redirect(url_for("home"))
 
 
 if __name__ == '__main__':

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% import "bootstrap/wtf.html" as wtf %}
 
 {% block styles %}
   {{ super() }}
@@ -15,7 +14,7 @@
     <h1 class="heading">Select Movie</h1>
     {% for movie in movie_list: %}
   <p>
-  <a href="#"> {{ movie.title }} - {{ movie.release_date}}</a>
+  <a href="{{ url_for('find_movie', id=movie.id)}}"> {{ movie.title }} - {{ movie.release_date}}</a>
   </p>
   {% endfor %}
 
