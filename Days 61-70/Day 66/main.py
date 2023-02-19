@@ -3,14 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-##Connect to Database
+# Connect to Database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-##Cafe TABLE Configuration
-class Cafe(db.Model):
+# Cafe TABLE Configuration
+class Cafe(db.Model):  # type: ignore
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), unique=True, nullable=False)
     map_url = db.Column(db.String(500), nullable=False)
@@ -27,15 +27,14 @@ class Cafe(db.Model):
 @app.route("/")
 def home():
     return render_template("index.html")
-    
 
-## HTTP GET - Read Record
+# HTTP GET - Read Record
 
-## HTTP POST - Create Record
+# HTTP POST - Create Record
 
-## HTTP PUT/PATCH - Update Record
+# HTTP PUT/PATCH - Update Record
 
-## HTTP DELETE - Delete Record
+# HTTP DELETE - Delete Record
 
 
 if __name__ == '__main__':
