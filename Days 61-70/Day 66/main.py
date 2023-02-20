@@ -24,6 +24,10 @@ class Cafe(db.Model):  # type: ignore
     can_take_calls = db.Column(db.Boolean, nullable=False)
     coffee_price = db.Column(db.String(250), nullable=True)
 
+    def to_dict(self):
+        return {column.name: getattr(self, column.name) for column in
+                self.__table__.columns}
+
 
 @app.route("/")
 def home():
@@ -35,6 +39,13 @@ def home():
 def get_random():
     all_cafes = db.session.query(Cafe).all()
     random_cafe = random.choice(all_cafes)
+    return jsonify(cafe=random_cafe.to_dict())
+
+
+@app.route("/all")
+def get_all():
+    all_cafes = db.session.query(Cafe).all()
+    return [jsonify(cafe.to_dict()) for cafe in all_cafes]
 
 # HTTP POST - Create Record
 
