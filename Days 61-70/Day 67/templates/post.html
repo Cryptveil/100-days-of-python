@@ -1,63 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-{% include 'header.html' %}
-<body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="{{url_for('home')}}">Grellheist's Blog</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('home')}}">Home</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('about')}}">About</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="{{url_for('contact')}}">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Page Header-->
-    <header class="masthead" style="background-image: url('../static/assets/img/post-bg.jpg')">
-        <div class="container position-relative px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="post-heading">
-                        <h1>{{post["title"]}}</h1>
-                        <h2 class="subheading">{{post["subtitle"]}}</h2>
-                        <span class="meta">
-                            Posted by
-                            <a href="https://github.com/grellheist">Grellheist</a>
-                            on August 24, 2022
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Post Content-->
-    <article class="mb-4">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <p>{{post["body"]}}</p>
-                </div>
-            </div>
-        </div>
-    </article>
-    <!-- Footer-->
-    {% include 'footer.html' %}
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script> <!-- Core theme JS-->
-    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
-</body>
+{% include "header.html" %}
 
-</html>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{post.img_url}}')">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="post-heading">
+					<h1>{{post.title}}</h1>
+					<h2 class="subheading">{{post.subtitle}}</h2>
+					<span class="meta">Posted by
+              <a href="#">{{post.author}}</a>
+              on {{post.date}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>
+            {{post.body}}
+          </p>
+           <hr>
+           <div class="clearfix">
+          <a class="btn btn-primary float-right" href="{{url_for('edit_post', post_id=post.id)}}">Edit Post</a>
+        </div>
+          </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+{% include "footer.html" %}
