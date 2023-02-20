@@ -62,5 +62,10 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/new-post")
+def make_post():
+    return render_template("make-post.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
