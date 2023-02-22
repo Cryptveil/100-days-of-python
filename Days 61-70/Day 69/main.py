@@ -41,7 +41,9 @@ class User(UserMixin, db.Model):  # type: ignore
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(100))
-# db.create_all()
+
+# with app.app_context():
+#     db.create_all()
 
 
 @app.route('/')
@@ -54,10 +56,15 @@ def get_all_posts():
 def register():
     form = RegisterForm()
     if request.method == "POST":
+        hash_and_salted_password = generate_password_hash(
+            form.password.data,
+            method='pbkdf2:sha256',
+            salt_length=8
+        )
         new_user = User(
                 name=request.form.get("name"),
                 email=request.form.get("email"),
-                password=request.form.get("password")
+                password=hash_and_salted_password
                 )
         db.session.add(new_user)
         db.session.commit()
