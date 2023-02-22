@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect, url_for, flash
+from hashlib import new
+from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from datetime import date
@@ -6,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-from forms import CreatePostForm
+from forms import CreatePostForm, RegisterForm
 from flask_gravatar import Gravatar
 
 app = Flask(__name__)
@@ -34,15 +35,34 @@ class BlogPost(db.Model):  # type: ignore
 # db.create_all()
 
 
+class User(UserMixin, db.Model):  # type: ignore
+    __tablename__ = "users"
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), unique=True)
+    password = db.Column(db.String(100))
+    name = db.Column(db.String(100))
+# db.create_all()
+
+
 @app.route('/')
 def get_all_posts():
     posts = BlogPost.query.all()
     return render_template("index.html", all_posts=posts)
 
 
-@app.route('/register')
+@app.route('/register', methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    form = RegisterForm()
+    if request.method == "POST":
+        new_user = User(
+                name=request.form.get("name"),
+                email=request.form.get("email"),
+                password=request.form.get("password")
+                )
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for("get_all_posts"))
+    return render_template("register.html", form=form)
 
 
 @app.route('/login')
