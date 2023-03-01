@@ -7,16 +7,20 @@ I'm separating all the projects in clusters of 10 days each for better visibilit
 
 ## Milestones:
 
-###### Beginner
+#### Beginner
 - [x] Challenge started!
 - [x] 10 days complete!
+#### Intermediate
 - [x] 20 days complete!
 - [x] 30 days complete!
+#### Intermediate+
 - [x] 40 days complete!
 - [x] 50 days complete!
+#### Advanced
 - [x] 60 days complete!
 - [x] 70 days complete!
 - [ ] 80 days complete!
+#### Professional
 - [ ] 90 days complete!
 - [ ] 100 days complete!
 
