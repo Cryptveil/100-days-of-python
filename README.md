@@ -18,3 +18,8 @@ I'm separating all the projects in clusters of 10 days each for better visibilit
 - [ ] 80 days complete!
 - [ ] 90 days complete!
 - [ ] 100 days complete!
+
+### Note:
+Day 80 onwards mark the "Professional" projects in the course, and there are no
+tutorials nor hints for finishing them, and therefore they will be 100% built
+by me.
