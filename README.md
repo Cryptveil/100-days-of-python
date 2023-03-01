@@ -7,6 +7,7 @@ I'm separating all the projects in clusters of 10 days each for better visibilit
 
 ## Milestones:
 
+###### Beginner
 - [x] Challenge started!
 - [x] 10 days complete!
 - [x] 20 days complete!
