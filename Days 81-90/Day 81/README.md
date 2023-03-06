@@ -13,7 +13,7 @@ Code</a>
 The design, functionality, code style is all up to you. You're wearing the
 big-girl/big-boy pants now. So you get to decide.
 
-Reflection Time:
+## Reflection Time:
 
 This is a place to journal your experience of completing this project. This
 will help you figure out how to improve as a developer.
