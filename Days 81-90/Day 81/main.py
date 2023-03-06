@@ -6,6 +6,6 @@ def to_morse_code(string):
     return encode.replace("SPACE", "/")
 
 
-string = input("Type something to convert to morse code:\n").upper()
+string = input("Type something to be converted to morse code:\n").upper()
 
 print(to_morse_code(string))
