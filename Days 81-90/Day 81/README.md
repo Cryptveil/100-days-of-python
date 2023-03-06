@@ -21,3 +21,8 @@ will help you figure out how to improve as a developer.
 Write down how you approached the project. What was hard, what was easy. How
 might you improve for the next project? What was your biggest learning from
 today? What would you do differently if you were to tackle this project again?
+
+### Feedback:
+
+Very easy project, this one feels like the earlier days of the course. I am
+ready for the harder ones to come.
