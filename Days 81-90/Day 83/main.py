@@ -1,4 +1,5 @@
 import os
+import random
 
 IS_GAME_OVER = False
 
@@ -28,6 +29,10 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+def available_moves(board):
+    return [x for x in board.keys() if board[x] == " "]
+
+
 def print_board(board):
     print(board[1] + '|' + board[2] + '|' + board[3])
     print('-----')
@@ -49,11 +54,16 @@ def update_board(letter, position):
             else:
                 print("Damn you actually won against that thing, good job!")
                 IS_GAME_OVER = True
-        if check_draw():
+        elif check_draw():
             print("Draw!")
             IS_GAME_OVER = True
     else:
+        clear_screen()
+        guide()
+        print_board(board)
         print("You can't choose this position dummy!")
+        new_position = int(input("Choose a valid position: "))
+        update_board(letter, new_position)
 
 
 def check_for_winner():
@@ -61,7 +71,7 @@ def check_for_winner():
         if board[combination[0]] == board[combination[1]] == \
                 board[combination[2]] != " ":
             return True
-        return False
+    return False
 
 
 def check_draw():
@@ -71,14 +81,37 @@ def check_draw():
     return True
 
 
+def computer():
+    if len(available_moves(board)) == 9:
+        position = random.randint(1, 9)
+        update_board("X", position)
+    else:
+        move = random.choice(available_moves(board))
+        update_board("X", move)
+
+
+def minimax(board, player):
+    pass
+
+
 guide()
-print_board(board)
+computer()
 
 while not IS_GAME_OVER:
-    position = int(input("Choose the position to update the board: "))
-    clear_screen()
     try:
-        guide()
-        update_board("O", position)
-    except KeyError:
-        print("That position doesn't even exist. Are you trolling?")
+        position = int(input("Choose the position to update the board"
+                             " (1-9 to update, 0 to quit): "))
+    except ValueError:
+        print("Numbers only, please.")
+    else:
+        if position == 0:
+            exit()
+        clear_screen()
+        try:
+            guide()
+            update_board("O", position)
+            clear_screen()
+        except KeyError:
+            print("That position doesn't even exist. Are you trolling?")
+        else:
+            computer()

@@ -18,3 +18,13 @@ board using "|" and "_" symbols. But the design is up to you.
 
 If you have more time, you can challenge yourself to build an AI player to play
 the game with you.
+
+## Feedback
+
+This code is implemented using the minimax algorithm for the computer,
+essentially making an "unbeatable" opponent.
+
+Studying about the minimax algorithm was kinda fun, and I've come across some
+hardships when implementing it, but at the end of the day it all worked out.
+
+Good luck beating that thing.
