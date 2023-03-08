@@ -49,6 +49,9 @@ def update_board(letter, position):
             else:
                 print("Damn you actually won against that thing, good job!")
                 IS_GAME_OVER = True
+        if check_draw():
+            print("Draw!")
+            IS_GAME_OVER = True
     else:
         print("You can't choose this position dummy!")
 
@@ -59,6 +62,13 @@ def check_for_winner():
                 board[combination[2]] != " ":
             return True
         return False
+
+
+def check_draw():
+    for key in board.keys():
+        if (board[key] == ' '):
+            return False
+    return True
 
 
 guide()
