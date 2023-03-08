@@ -47,8 +47,9 @@ def update_board(letter, position):
     if board[position] == " ":
         board[position] = letter
         print_board(board)
-        if check_for_winner():
-            if letter == "X":
+        winner = check_for_winner()
+        if winner:
+            if winner == "X":
                 print("Computer wins!")
                 IS_GAME_OVER = True
             else:
@@ -70,8 +71,8 @@ def check_for_winner():
     for combination in winning_combinations:
         if board[combination[0]] == board[combination[1]] == \
                 board[combination[2]] != " ":
-            return True
-    return False
+            return board[combination[0]]
+    return None
 
 
 def check_draw():
@@ -86,12 +87,49 @@ def computer():
         position = random.randint(1, 9)
         update_board("X", position)
     else:
-        move = random.choice(available_moves(board))
-        update_board("X", move)
+        best_score = -float('inf')
+        best_move = None
+        for move in available_moves(board):
+            board[move] = "X"
+            score = minimax(board, "X")
+            board[move] = " "
+            if score > best_score:
+                best_score = score
+                best_move = move
+        update_board("X", best_move)
 
 
-def minimax(board, player):
-    pass
+def minimax(board, player, alpha=-float('inf'), beta=float('inf')):
+    if check_for_winner():
+        if player == "X":
+            return 1
+        else:
+            return -1
+    elif check_draw():
+        return 0
+
+    if player == "X":
+        best_score = -float('inf')
+        for move in available_moves(board):
+            board[move] = "X"
+            score = minimax(board, "O", alpha, beta)
+            board[move] = " "
+            best_score = max(best_score, score)
+            alpha = max(alpha, best_score)
+            if beta <= alpha:
+                break  # pruning
+        return best_score
+    else:
+        best_score = float('inf')
+        for move in available_moves(board):
+            board[move] = "O"
+            score = minimax(board, "X", alpha, beta)
+            board[move] = " "
+            best_score = min(best_score, score)
+            beta = min(beta, best_score)
+            if beta <= alpha:
+                break  # pruning
+        return best_score
 
 
 guide()
@@ -110,8 +148,8 @@ while not IS_GAME_OVER:
         try:
             guide()
             update_board("O", position)
-            clear_screen()
         except KeyError:
             print("That position doesn't even exist. Are you trolling?")
         else:
-            computer()
+            if not check_for_winner():
+                computer()

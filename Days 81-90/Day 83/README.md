@@ -21,10 +21,15 @@ the game with you.
 
 ## Feedback
 
-This code is implemented using the minimax algorithm for the computer,
-essentially making an "unbeatable" opponent.
+This code is implemented using the minimax algorithm for the computer, and the
+goal was to essentially make an "unbeatable" opponent.
 
 Studying about the minimax algorithm was kinda fun, and I've come across some
-hardships when implementing it, but at the end of the day it all worked out.
+hardships when implementing it, but at the end of the day it kinda worked out.
 
-Good luck beating that thing.
+I also implemented alpha-beta pruning for better performance.
+
+The minimax function doesn't choose the correct move all the time, and it has
+some bug I don't know what it is.
+
+However, for now it is good enough.
