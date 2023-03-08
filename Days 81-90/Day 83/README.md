@@ -27,4 +27,4 @@ goal was to essentially make an "unbeatable" opponent.
 Studying about the minimax algorithm was kinda fun, and I've come across some
 hardships when implementing it, but at the end of the day it kinda worked out.
 
-I implemented alpha-beta pruning for better performance.
+I've also implemented alpha-beta pruning for better performance.
