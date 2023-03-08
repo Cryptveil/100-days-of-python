@@ -27,9 +27,4 @@ goal was to essentially make an "unbeatable" opponent.
 Studying about the minimax algorithm was kinda fun, and I've come across some
 hardships when implementing it, but at the end of the day it kinda worked out.
 
-I also implemented alpha-beta pruning for better performance.
-
-The minimax function doesn't choose the correct move all the time, and it has
-some bug I don't know what it is.
-
-However, for now it is good enough.
+I implemented alpha-beta pruning for better performance.

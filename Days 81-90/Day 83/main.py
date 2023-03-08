@@ -89,46 +89,48 @@ def computer():
     else:
         best_score = -float('inf')
         best_move = None
+        alpha = -float('inf')
+        beta = float('inf')
         for move in available_moves(board):
             board[move] = "X"
-            score = minimax(board, "X")
+            score = minimax(board, 0, alpha, beta, False)
             board[move] = " "
             if score > best_score:
                 best_score = score
                 best_move = move
+            alpha = max(alpha, score)
         update_board("X", best_move)
 
 
-def minimax(board, player, alpha=-float('inf'), beta=float('inf')):
-    if check_for_winner():
-        if player == "X":
-            return 1
-        else:
-            return -1
+def minimax(board, depth, alpha, beta, is_maximizing):
+    if check_for_winner() == "X":
+        return 1
+    elif check_for_winner() == "O":
+        return -1
     elif check_draw():
         return 0
 
-    if player == "X":
+    if is_maximizing:
         best_score = -float('inf')
         for move in available_moves(board):
             board[move] = "X"
-            score = minimax(board, "O", alpha, beta)
+            score = minimax(board, depth+1, alpha, beta, False)
             board[move] = " "
             best_score = max(best_score, score)
-            alpha = max(alpha, best_score)
+            alpha = max(alpha, score)
             if beta <= alpha:
-                break  # pruning
+                break
         return best_score
     else:
         best_score = float('inf')
         for move in available_moves(board):
             board[move] = "O"
-            score = minimax(board, "X", alpha, beta)
+            score = minimax(board, depth+1, alpha, beta, True)
             board[move] = " "
             best_score = min(best_score, score)
-            beta = min(beta, best_score)
+            beta = min(beta, score)
             if beta <= alpha:
-                break  # pruning
+                break
         return best_score
 
 
