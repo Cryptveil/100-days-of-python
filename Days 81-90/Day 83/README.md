@@ -14,7 +14,7 @@ https://www.google.com/search?q=tic+tac+toe
 You can choose how you want your game to look. The simplest is to create a game
 board using "|" and "_" symbols. But the design is up to you.
 
-<img link="https://img-c.udemycdn.com/redactor/raw/assignment/2020-11-01_12-03-38-e5280d9fe826c4159963ec47097fc2e5.png">
+<img src="https://img-c.udemycdn.com/redactor/raw/assignment/2020-11-01_12-03-38-e5280d9fe826c4159963ec47097fc2e5.png">
 
 If you have more time, you can challenge yourself to build an AI player to play
 the game with you.
