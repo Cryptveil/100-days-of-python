@@ -1,11 +1,13 @@
 import time
 import tkinter as tk
 
+
 # Read words from file
 def get_words():
     with open('words.txt') as f:
         words = f.read().split()
     return words
+
 
 # Update the WPM counter
 def update_wpm():
@@ -20,6 +22,7 @@ def update_wpm():
 
     # Schedule the next update
     root.after(100, update_wpm)
+
 
 # Start the test
 def start_test():
@@ -37,6 +40,7 @@ def start_test():
     start_time = time.time()
     update_wpm()
 
+
 # Calculate WPM and accuracy
 def end_test():
     global start_time
@@ -44,7 +48,7 @@ def end_test():
     entry.config(state=tk.DISABLED)
 
     # Stop the WPM counter update loop
-    wpm_label.after_cancel(update_wpm)
+    wpm_label.after_cancel(update_wpm)  # type: ignore
 
     # Calculate time taken and words per minute
     end_time = time.time()
@@ -57,8 +61,10 @@ def end_test():
     accuracy = len(correct_words) / len(words_typed)
 
     # Display results
-    result_label.config(text=f"WPM: {round(wpm)}\nAccuracy: {round(accuracy*100)}%")
+    result_label.config(text=f"WPM: {round(wpm)}\nAccuracy: "
+                        f"{round(accuracy*100)}%")
     result_label.pack()
+
 
 # Create the main window
 root = tk.Tk()
@@ -67,7 +73,8 @@ root.title("Typing Test")
 # Create the widgets
 words = get_words()
 text_label = tk.Label(root, text=" ".join(words), font=("Arial", 12))
-start_button = tk.Button(root, text="Start", font=("Arial", 12), command=start_test)
+start_button = tk.Button(root, text="Start", font=("Arial", 12),
+                         command=start_test)
 entry = tk.Entry(root, font=("Arial", 12), state=tk.DISABLED)
 wpm_label = tk.Label(root, text="WPM: 0", font=("Arial", 12))
 result_label = tk.Label(root, font=("Arial", 12))
