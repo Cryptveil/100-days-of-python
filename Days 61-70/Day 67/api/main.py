@@ -5,7 +5,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditor, CKEditorField
-from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -67,7 +66,7 @@ def contact():
 def make_post():
     form = CreatePostForm()
     if request.method == "POST":
-        date_of_post = datetime.now().strftime("%B %d, %Y")
+        date_of_post = "oi"
         new_post = BlogPost(
                 title=request.form.get("title"),
                 subtitle=request.form.get("subtitle"),
