@@ -4,10 +4,12 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from datetime import datetime
+from flask_bootstrap import Bootstrap5
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b"
+Bootstrap5(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -39,9 +41,9 @@ def make_task():
     if request.method == "POST":
         creation = datetime.now().strftime("%B %d, %Y")
         new_task = TaskList(
-                description=request.form.get("description"),
+                description=form.task.data,
                 date_of_creation=creation,
-                due_date=request.form.get("date")
+                due_date=form.due_date.data
                 )
         db.session.add(new_task)
         db.session.commit()
