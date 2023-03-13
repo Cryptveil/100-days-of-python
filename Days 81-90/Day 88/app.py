@@ -21,10 +21,6 @@ class TaskList(db.Model):  # type: ignore
     due_date = db.Column(db.String(250), nullable=False)
 
 
-with app.app_context():
-    db.create_all()
-
-
 class CreateNewTask(FlaskForm):
     task = StringField("Type your task here", validators=[DataRequired()])
     due_date = StringField("Due date", validators=[DataRequired()])
