@@ -29,6 +29,12 @@ class CreateNewTask(FlaskForm):
     submit = SubmitField("New Task")
 
 
+class EditTask(FlaskForm):
+    task = StringField("Edit your task", validators=[DataRequired()])
+    due_date = StringField("Due date", validators=[DataRequired()])
+    submit = SubmitField("Edit Task")
+
+
 @app.route("/")
 def home():
     all_tasks = TaskList.query.all()
@@ -49,6 +55,26 @@ def make_task():
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("create_task.html", form=form)
+
+
+@app.route("/edit/<int:task_id>", methods=["GET", "POST"])
+def edit(task_id):
+    task = TaskList.query.get(task_id)
+    form = EditTask()
+    if request.method == "POST":
+        task.description = form.task.data
+        task.due_date = form.due_date.data
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("edit.html", task=task, form=form)
+
+
+@app.route("/delete/<int:task_id>")
+def delete(task_id):
+    task = TaskList.query.get(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for("home"))
 
 
 if __name__ == "__main__":

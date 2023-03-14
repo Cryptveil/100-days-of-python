@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p>hello world</p> 
+{% if tasks == []: %}
+<h1>You have no tasks!</h1>
+{% else: %}
+<h1>Your list of tasks:</h1>
+<ul>
+    {% for task in tasks: %}
+    <li>Description: {{task.description}} - Date of Creation: {{task.date_of_creation}} <a href="{{url_for('edit', task_id=task.id)}}">Edit Task</a> <a href="{{url_for('delete', task_id=task.id)}}">Delete Task</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+<a href="{{url_for('make_task')}}">Add New Task</a>
 {% endblock %}
