@@ -21,7 +21,7 @@ I'm separating all the projects in clusters of 10 days each for better visibilit
 - [x] 70 days complete!
 - [x] 80 days complete!
 #### Professional
-- [ ] 90 days complete!
+- [x] 90 days complete!
 - [ ] 100 days complete!
 
 ### Note:
