@@ -19,8 +19,10 @@ http://www.coolphptools.com/color_extract#demo
 
 ## Feedback
 
-I managed to do the task of counting the occurances of shades, however, the
+I managed to do the task of counting the occurrences of shades, however, the
 program doesn't filter different shades of the same color (example: multiple
-shades of black will just print and no other colors will print). 
+shades of black will just print and no other colors will print), so this
+program works best when the image has some very contrasting colors and not many
+shades of them (hence the Brazilian flag included into the folder).
 
 For now, the current program will do.
