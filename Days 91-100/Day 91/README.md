@@ -16,3 +16,11 @@ colours in that image.
 This is a good example of this functionality:
 
 http://www.coolphptools.com/color_extract#demo
+
+## Feedback
+
+I managed to do the task of counting the occurances of shades, however, the
+program doesn't filter different shades of the same color (example: multiple
+shades of black will just print and no other colors will print). 
+
+For now, the current program will do.
