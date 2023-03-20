@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import requests
 
 app = Flask(__name__)
+API_KEY = ""
 
 
 @app.route('/')
@@ -11,7 +12,7 @@ def index():
 
 @app.route('/weather/<city>')
 def weather(city):
-    url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=YOUR_API_KEY'
+    url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}'
     response = requests.get(url)
     data = response.json()
     temperature = round(data['main']['temp'] - 273.15, 1)
