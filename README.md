@@ -28,3 +28,10 @@ I'm separating all the projects in clusters of 10 days each for better visibilit
 Day 80 onwards mark the "Professional" projects in the course, and there are no
 tutorials nor hints for finishing them, and therefore they will be 100% built
 by me.
+
+# Afterthoughts
+This challenge made me realize how much I like solving problems and how much I
+like coding. It was something I missed a lot.
+
+It also made me realize that ~~Python fucking sucks lol~~ I will enjoy working
+more with other languages.
