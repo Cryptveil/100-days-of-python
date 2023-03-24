@@ -33,7 +33,7 @@ by me.
 This challenge made me realize how much I like solving problems and how much I
 like coding. It was something I missed a lot.
 
-It also made me realize that ~~python fucking sucks lol~~ I would like to
+It also made me realize ~~python fucking sucks lol~~ how much I would like to
 explore more languages in the future.
 
 Overall, super worth purchasing this course, it is very cheap for how much you
